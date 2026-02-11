@@ -1,0 +1,140 @@
+---
+const projects = [
+  {
+    title: "Gifs App",
+    description:
+      "Aplicación de alto rendimiento para la búsqueda y gestión de GIFs en tiempo real. Desarrollada con un stack moderno enfocado en la tipado fuerte y el consumo eficiente de APIs, ofreciendo una interfaz fluida, minimalista y totalmente responsiva",
+    image: "/images/proyecto-1.jpeg",
+    live: "https://gifs-app-free.netlify.app/",
+    github: "https://github.com/noldee/Gifs-App",
+    stack: ["react", "tailwind", "typescript", "axios"],
+  },
+  {
+    title: "Mondern User Manager",
+    description:
+      "Full-Stack REST API & Dashboard — Proyecto desarrollado con arquitectura desacoplada. Backend con Java/Spring Data JPA y MySQL. Frontend con React, Tailwind CSS para el diseño minimalista y Framer Motion para micro-interacciones. Implementa patrones de diseño limpios y manejo de estado persistente con LocalStorage.",
+    image: "/images/proyecto-2.jpeg",
+    live: "https://modern-user-manager.netlify.app/",
+    github: "https://github.com/noldee/modern-user-manager",
+    stack: ["react", "tailwind", "spring boot", "mysql", "typescript"],
+  },
+  {
+    title: "Spotify Clone",
+    description:
+      "Clon de Spotify de alto rendimiento desarrollado con la arquitectura de Astro Islands. Utiliza Svelte para la gestión del reproductor y estados globales reactivos, y React para componentes dinámicos de la interfaz, logrando una carga instantánea y una experiencia de usuario fluida mediante navegación entre páginas con transiciones de vista nativas.",
+    image: "/images/proyecto-3.jpeg",
+    live: "https://spotify-clone-with-astro.netlify.app/",
+    github: "https://github.com/noldee/spotify-clone",
+    stack: ["astro", "react", "svelte", "tailwind", "typescript"],
+  },
+  {
+    title: "La Bruja Store",
+    description:
+      "Plataforma E-commerce escalable desarrollada de forma colaborativa. Implementa un backend robusto con Spring Boot y JPA para la gestión eficiente de persistencia de datos, control de inventario y procesamiento de pedidos de productos tecnológicos.",
+    image: "/images/proyecto-4.jpeg",
+    live: "https://labrujastore.com.pe/",
+    github: "", // Lo dejamos vacío ya que es privado
+    stack: ["Spring Boot", "JPA", "Java", "MySQL"],
+  },
+];
+---
+
+<section id="proyectos" class="py-20 px-4">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex items-center gap-4 mb-16">
+      <h3
+        class="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter flex items-center gap-3"
+      >
+        Proyectos
+      </h3>
+      <div class="h-[1px] flex-1 bg-gradient-to-r from-white/20 to-transparent">
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 gap-12 md:gap-20">
+      {
+        projects.map((project) => (
+          <div class="relative group">
+            <div class="hidden md:block absolute inset-0 translate-x-2 translate-y-2   rounded-2xl -z-10" />
+
+            <article class="flex flex-col md:grid md:grid-cols-2 gap-0  rounded-2xl overflow-hidden backdrop-blur-[2px]">
+              <div class="relative overflow-hidden group/img border-b border-white/10 md:border-b-0 md:border-r">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover/img:scale-110"
+                />
+              </div>
+
+              <div class="px-5 flex flex-col justify-center">
+                <h3 class="text-2xl md:text-4xl font-bold text-white mb-4 md:mb-6 tracking-tight">
+                  {project.title}
+                </h3>
+
+                <div class="flex flex-wrap gap-2 mb-6 md:mb-8">
+                  {project.stack.map((tech) => (
+                    <span class="flex items-center gap-2 px-3 py-1 border border-white/10 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-gray-400">
+                      <span class="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_#3b82f6]" />
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <p class="text-gray-400 text-sm leading-relaxed mb-8 md:mb-0 max-w-prose">
+                  {project.description}
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 mt-7">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    class="flex items-center justify-center gap-3 px-6 py-3 border border-white/10 text-white text-sm font-bold rounded-xl hover:bg-white hover:text-black transition-all duration-300 shadow-xl"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                      <path d="M9 18c-4.51 2-5-2-7-2" />
+                    </svg>
+                    CODE
+                  </a>
+
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    class="flex items-center justify-center gap-3 px-6 py-3 border border-white/10 text-white text-sm font-bold rounded-xl hover:border-white/40 transition-all duration-300"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                      <polyline points="15 3 21 3 21 9" />
+                      <line x1="10" y1="14" x2="21" y2="3" />
+                    </svg>
+                    LIVE DEMO
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

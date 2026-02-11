@@ -1,0 +1,46 @@
+---
+import { techIcons } from "@/lib/techIcons";
+import LogoLoop from "./LogoLoop";
+
+const techLogos = Object.entries(techIcons).map(([name, src]) => ({
+  src: src,
+  alt: name,
+}));
+---
+
+<section class="bg-[#121212] py-20 overflow-hidden">
+  <div class="mb-16">
+    <div class="flex items-center gap-4 mb-8">
+      <h3 class="text-4xl uppercase font-black text-white">Sobre mí</h3>
+      <div class="h-[1px] flex-1 bg-gradient-to-r from-[#333] to-transparent">
+      </div>
+    </div>
+
+    <p class="text-gray-400 mt-4 leading-relaxed max-w-3xl">
+      Soy Walter, desarrollador de software con pasión por crear soluciones web
+      modernas. Me encanta aprender y experimentar con nuevas tecnologías para
+      construir productos de calidad.
+    </p>
+  </div>
+  <div class="max-w-6xl mx-auto">
+    <h3 class="text-2xl font-bold text-white mb-10">Tecnologías</h3>
+
+    <div class="relative w-full overflow-hidden">
+      <div class="flex gap-6 animate-scroll whitespace-nowrap">
+        <LogoLoop
+          logos={techLogos}
+          speed={80}
+          direction="left"
+          logoHeight={40}
+          gap={60}
+          hoverSpeed={0}
+          scaleOnHover
+          fadeOut
+          fadeOutColor="#121212"
+          ariaLabel="Technology partners"
+          client:load
+        />
+      </div>
+    </div>
+  </div>
+</section>

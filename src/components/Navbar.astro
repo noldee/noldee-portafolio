@@ -1,0 +1,18 @@
+---
+import DownloadButton from "./DownloadButton.astro";
+import Enlace from "./Enlace.astro";
+---
+
+<header class="flex justify-between items-baseline mt-10">
+  <div class="flex items-baseline gap-x-8">
+    <h2 class="text-xl md:text-2xl font-bold uppercase text-white">Noldee</h2>
+
+    <nav class="flex items-baseline gap-x-5 text-gray-400">
+      <Enlace href="/" title="Inicio" />
+      <Enlace href="#proyectos" title="Proyectos" />
+      <Enlace href="#contacto" title="Contacto" />
+    </nav>
+  </div>
+
+  <DownloadButton />
+</header>
