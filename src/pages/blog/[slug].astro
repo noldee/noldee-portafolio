@@ -1,0 +1,113 @@
+---
+import Layout from "@/layout/Layout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout title={post.data.title}>
+  <main class="py-24 bg-white min-h-screen">
+    <div class="max-w-3xl mx-auto px-6">
+      <nav class="mb-12">
+        <a
+          href="/blog"
+          class="group flex items-center gap-2 text-gray-400 hover:text-blue-600 transition-colors text-xs font-bold uppercase tracking-widest"
+        >
+          <svg
+            class="size-4 transition-transform group-hover:-translate-x-1"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.5"
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg
+          >
+          Volver al Journal
+        </a>
+      </nav>
+
+      <article class="space-y-8">
+        <header class="space-y-6">
+          <div class="flex gap-3">
+            {
+              post.data.tags.map((tag) => (
+                <span class="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-wider">
+                  {tag}
+                </span>
+              ))
+            }
+          </div>
+
+          <h1
+            class="text-5xl md:text-6xl font-extrabold text-black tracking-tighter leading-tight"
+          >
+            {post.data.title}
+          </h1>
+
+          <div
+            class="flex items-center gap-4 text-gray-400 text-sm italic font-medium"
+          >
+            <time
+              >{
+                post.data.pubDate.toLocaleDateString("es-ES", {
+                  month: "long",
+                  day: "numeric",
+                  year: "numeric",
+                })
+              }</time
+            >
+            <span class="size-1 bg-gray-200 rounded-full"></span>
+            <span>Walter Soca</span>
+          </div>
+
+          <img
+            src={post.data.image}
+            alt={post.data.title}
+            class="w-full aspect-video object-cover rounded-[2.5rem] shadow-2xl shadow-blue-100/50 border border-gray-100"
+          />
+        </header>
+
+        <div
+          class="prose prose-blue prose-lg max-w-none prose-pre:bg-[#1e1e1e] prose-pre:p-6 prose-pre:rounded-[1.5rem] prose-pre:border prose-pre:border-gray-800"
+        >
+          <Content />
+        </div>
+      </article>
+    </div>
+  </main>
+</Layout>
+
+<style is:global>
+  .prose pre code span {
+    background-color: transparent !important;
+    padding: 0 !important;
+  }
+
+  .prose pre {
+    background-color: #1e1e1e !important;
+  }
+
+  .prose :not(pre) > code {
+    background-color: rgba(37, 99, 235, 0.1) !important;
+    color: #2563eb !important;
+    padding: 0.2rem 0.4rem !important;
+    border-radius: 0.375rem !important;
+    font-weight: 500 !important;
+  }
+
+  .prose code::before,
+  .prose code::after {
+    content: "" !important;
+  }
+</style>

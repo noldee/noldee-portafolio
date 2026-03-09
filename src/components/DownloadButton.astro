@@ -1,11 +1,11 @@
 ---
-
+// DownloadButton.astro
 ---
 
 <a
   href="/CV.pdf"
   download="CV-Walter-Soca"
-  class="hidden md:inline-flex items-center bg-[#3481fe] text-white p-2 rounded font-semibold text-sm md:text-base"
+  class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 shadow-lg shadow-blue-100 active:scale-95"
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -14,14 +14,14 @@
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
-    stroke-width="2"
+    stroke-width="2.5"
     stroke-linecap="round"
     stroke-linejoin="round"
     class="mr-2"
   >
-    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline
-      points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"
-    ></line>
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+    <polyline points="7 10 12 15 17 10"></polyline>
+    <line x1="12" y1="15" x2="12" y2="3"></line>
   </svg>
   Descargar CV
 </a>
