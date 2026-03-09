@@ -1,0 +1,123 @@
+---
+import { techIcons } from "@/lib/techIcons";
+import LogoLoop from "../animations/LogoLoop";
+
+const techLogos = Object.entries(techIcons).map(([name, src]) => ({
+  src: src,
+  alt: name,
+}));
+---
+
+<section class="py-24 relative overflow-hidden transition-colors duration-300">
+  <div
+    class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-100 dark:via-white/5 to-transparent"
+  >
+  </div>
+
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start mb-24">
+      <div>
+        <span
+          class="text-blue-600 dark:text-blue-400 text-xs font-bold tracking-widest uppercase bg-blue-50 dark:bg-blue-500/10 px-3 py-1 rounded-md"
+        >
+          Trayectoria
+        </span>
+        <h3
+          class="text-4xl md:text-5xl font-extrabold text-black dark:text-white tracking-tighter mt-4 mb-6"
+        >
+          Sobre mí
+        </h3>
+        <div class="w-12 h-1 bg-blue-600 dark:bg-blue-500 rounded-full mb-6">
+        </div>
+      </div>
+
+      <div>
+        <p
+          class="text-gray-500 dark:text-gray-400 text-lg md:text-xl leading-relaxed font-normal"
+        >
+          Soy <span class="text-black dark:text-white font-semibold italic"
+            >Walter</span
+          >, desarrollador de software con pasión por crear soluciones web
+          modernas. Me especializo en transformar ideas complejas en interfaces <span
+            class="text-blue-600 dark:text-blue-400 underline decoration-blue-200 dark:decoration-blue-500/30 underline-offset-4"
+            >simples y potentes</span
+          >.
+        </p>
+        <p
+          class="text-gray-400 dark:text-gray-500 mt-4 text-sm md:text-base leading-relaxed"
+        >
+          Focalizado en la escalabilidad y el rendimiento, siempre buscando la
+          excelencia técnica en cada línea de código.
+        </p>
+      </div>
+    </div>
+
+    <div
+      class="rounded-3xl border border-gray-100 dark:border-white/5 bg-transparent dark:bg-white/[0.01] p-8 md:p-12"
+    >
+      <div
+        class="flex flex-col md:flex-row justify-between items-center mb-10 gap-4"
+      >
+        <h3
+          class="text-sm font-bold text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em]"
+        >
+          Stack Tecnológico
+        </h3>
+        <div
+          class="h-px flex-1 bg-gray-200 dark:bg-white/5 hidden md:block ml-8"
+        >
+        </div>
+      </div>
+
+      <div class="relative w-full">
+        <div class="flex items-center">
+          <LogoLoop
+            logos={techLogos}
+            speed={60}
+            direction="left"
+            logoHeight={35}
+            gap={80}
+            hoverSpeed={10}
+            scaleOnHover
+            fadeOut
+            fadeOutColor="var(--loop-fade)"
+            ariaLabel="Tecnologías que utilizo"
+            client:load
+          />
+        </div>
+      </div>
+
+      <p
+        class="text-center text-xs text-gray-400 dark:text-gray-600 mt-10 font-medium italic"
+      >
+        * Siempre aprendiendo nuevas herramientas para optimizar el flujo de
+        trabajo.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Variables dinámicas ajustadas al fondo real del Layout */
+  section {
+    --loop-fade: #ffffff; /* Blanco puro para modo claro */
+  }
+  :global(.dark) section {
+    --loop-fade: #000000; /* Negro puro para modo oscuro */
+  }
+
+  /* Filtros de los logos */
+  :global(.logo-item) {
+    filter: grayscale(1) opacity(0.5);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  :global(.dark .logo-item) {
+    filter: grayscale(1) invert(0.1) opacity(0.4);
+  }
+
+  :global(.logo-item:hover) {
+    filter: grayscale(0) opacity(1) !important;
+    transform: scale(1.1);
+  }
+</style>

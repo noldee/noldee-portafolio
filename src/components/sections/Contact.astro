@@ -1,0 +1,95 @@
+---
+// Contacto.astro
+---
+
+<section
+  id="contacto"
+  class="py-24 bg-transparent border-t border-gray-100 dark:border-white/5 transition-colors duration-300"
+>
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <div id="contact-content" class="opacity-0 translate-y-8">
+      <h4
+        class="text-4xl md:text-6xl font-extrabold text-black dark:text-white tracking-tighter mb-4 uppercase italic"
+      >
+        Hablemos<span class="text-blue-600">.</span>
+      </h4>
+
+      <p
+        class="text-gray-500 dark:text-neutral-400 text-lg md:text-xl mb-12 font-medium"
+      >
+        Respondo más rápido si hay un repo de por medio. <br
+          class="hidden md:block"
+        />
+        <span class="text-blue-600 dark:text-blue-400 italic"
+          >Colaborar con proyectos es lo mío ;)</span
+        >
+      </p>
+
+      <a
+        href="mailto:socamezareswalter@gmail.com"
+        class="group relative inline-block text-sm md:text-5xl font-black text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors tracking-tighter break-all"
+      >
+        socamezareswalter@gmail.com
+        <span
+          class="absolute -bottom-2 left-0 w-0 h-1 bg-blue-600 transition-all duration-300 group-hover:w-full"
+        ></span>
+      </a>
+    </div>
+
+    <footer
+      class="mt-32 pt-12 border-t border-gray-100 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-8"
+    >
+      <div class="flex flex-col items-center md:items-start gap-2">
+        <p
+          class="text-gray-400 dark:text-neutral-600 text-[10px] uppercase tracking-[0.3em] font-black"
+        >
+          © 2026 — Hecho por Walter Soca
+        </p>
+        <span
+          class="text-[9px] text-blue-600/50 dark:text-blue-400/30 font-bold uppercase tracking-widest"
+        >
+          Lima, Perú
+        </span>
+      </div>
+
+      <nav class="flex gap-8">
+        <a
+          href="https://github.com/noldee"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-gray-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors text-xs font-black uppercase tracking-[0.2em]"
+        >
+          GitHub
+        </a>
+        <a
+          href="https://www.linkedin.com/in/walter-soca-mezares-5b158b3b0/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-gray-500 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-xs font-black uppercase tracking-[0.2em]"
+        >
+          LinkedIn
+        </a>
+      </nav>
+    </footer>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  window.addEventListener("DOMContentLoaded", () => {
+    gsap.to("#contact-content", {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      ease: "power4.out",
+      scrollTrigger: {
+        trigger: "#contacto",
+        start: "top 85%",
+      },
+    });
+  });
+</script>

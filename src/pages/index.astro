@@ -1,20 +1,18 @@
 ---
-import About from "@/components/About.astro";
-import Contacto from "@/components/Contacto.astro";
-import Navbar from "@/components/Navbar.astro";
-import Proyectos from "@/components/Proyectos.astro";
-import SkillsAbout from "@/components/SkillsAbout.astro";
+import AboutMe from "@/components/sections/AboutMe.astro";
+import Contact from "@/components/sections/Contact.astro";
+import Experience from "@/components/sections/Experience.astro";
+import Projects from "@/components/sections/Projects.astro";
+import Skills from "@/components/sections/Skills.astro";
+import Navbar from "@/components/shared/Navbar.astro";
 import Layout from "@/layout/Layout.astro";
 ---
 
 <Layout title="Noldee">
-  <section class="md:min-h-screen">
-    <Navbar />
-    <About />
-  </section>
-  <section>
-    <SkillsAbout />
-  </section>
-  <Proyectos />
-  <Contacto />
+  <Navbar />
+  <AboutMe />
+  <Skills />
+  <Experience />
+  <Projects />
+  <Contact />
 </Layout>
