@@ -1,0 +1,32 @@
+---
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "../retroui/Button";
+
+interface Props {
+  href: string;
+  variant?: "default" | "secondary" | "outline" | "link" | "ghost";
+  size?: "sm" | "md" | "lg" | "icon";
+  className?: string;
+  target?: "_blank" | "_parent" | "_self" | "_top";
+  download?: string;
+}
+
+const {
+  href,
+  variant = "default",
+  size = "md",
+  className = "",
+  target,
+  download,
+} = Astro.props;
+---
+
+<a
+  href={href}
+  class={cn(buttonVariants({ variant, size }), className)}
+  target={target}
+  rel="noopener noreferrer"
+  download={download}
+>
+  <slot />
+</a>

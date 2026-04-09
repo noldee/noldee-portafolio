@@ -41,96 +41,93 @@ const projects = [
 
 <section
   id="proyectos"
-  class="py-24 bg-transparent relative overflow-hidden transition-colors duration-300"
+  class="py-32 bg-white dark:bg-zinc-900 relative overflow-hidden transition-colors duration-300 border-t-8 border-black dark:border-white"
 >
-  <div class="max-w-6xl mx-auto px-6">
-    <div
-      id="project-header"
-      class="flex flex-col mb-16 opacity-0 translate-y-10"
-    >
-      <span
-        class="text-blue-600 dark:text-blue-400 text-xs font-bold tracking-[0.3em] uppercase mb-4"
+  <div
+    class="absolute inset-0 pointer-events-none opacity-[0.03] dark:opacity-[0.05] z-50 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]"
+  >
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <div id="project-header" class="mb-24 relative">
+      <div
+        class="inline-block bg-black text-white dark:bg-white dark:text-black px-4 py-2 mb-6 shadow-[8px_8px_0px_0px_#2563eb]"
       >
-        Selected Works
-      </span>
+        <span class="text-xs font-black tracking-[0.5em] uppercase"
+          >ARCHIVO_01-04</span
+        >
+      </div>
       <h3
-        class="text-5xl font-extrabold text-black dark:text-white tracking-tighter"
+        class="text-5xl sm:text-7xl md:text-9xl font-black text-black dark:text-white tracking-tighter uppercase italic leading-none"
       >
-        Proyectos <span class="text-gray-300 dark:text-neutral-800">/</span> 01-04
+        Proyectos <span class="text-blue-600 not-italic">!</span>
       </h3>
+      <div
+        class="h-2 w-full bg-black dark:bg-white mt-4 shadow-[4px_4px_0px_0px_#2563eb]"
+      >
+      </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
       {
-        projects.map((project) => (
-          <article class="project-card opacity-0 flex flex-col rounded-[2.5rem] border border-gray-100 dark:border-white/5 bg-white dark:bg-white/[0.02] p-4 transition-all duration-500 hover:border-blue-100 dark:hover:border-blue-500/30 group">
-            <div
-              class="project-image-wrapper relative aspect-[16/10] rounded-[2rem] overflow-visible mb-6"
-              style="perspective: 1000px;"
-            >
-              <div class="project-image-container relative h-full w-full rounded-[1.5rem] overflow-hidden bg-gray-100 dark:bg-neutral-900 shadow-sm transition-transform duration-500">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  class="project-img h-full w-full object-cover scale-110 will-change-transform"
-                />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 dark:from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        projects.map((project, index) => (
+          <article class="project-card opacity-0 flex flex-col border-4 border-black dark:border-white bg-white dark:bg-zinc-800 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] dark:shadow-[12px_12px_0px_0px_rgba(37,99,235,1)] hover:shadow-none hover:translate-x-2 hover:translate-y-2 transition-all duration-200 group">
+            <div class="bg-black dark:bg-white p-3 flex justify-between items-center border-b-4 border-black dark:border-white">
+              <div class="flex items-center gap-3">
+                <div class="size-3 bg-red-500 border-2 border-white dark:border-black" />
+                <span class="text-[10px] font-black text-white dark:text-black uppercase tracking-widest">
+                  PROYECTO_{index + 1}.EXE
+                </span>
               </div>
+              <span class="text-white dark:text-black font-bold text-xs">
+                8-BIT SRC
+              </span>
             </div>
 
-            <div class="px-4 flex flex-col flex-1">
-              <div class="flex flex-wrap gap-2 mb-4">
+            <div class="relative aspect-video overflow-hidden border-b-4 border-black dark:border-white bg-blue-600">
+              <img
+                src={project.image}
+                alt={project.title}
+                class="project-img w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500"
+              />
+              <div class="absolute inset-0 bg-blue-600/20 mix-blend-multiply group-hover:bg-transparent transition-all" />
+
+              <div class="absolute bottom-4 left-4 flex flex-wrap gap-2 z-20">
                 {project.stack.map((tech) => (
-                  <span class="px-3 py-1 rounded-full bg-blue-50/50 dark:bg-blue-500/10 border border-blue-100/50 dark:border-blue-500/20 text-[10px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest">
+                  <span class="bg-yellow-300 text-black border-2 border-black px-2 py-0.5 text-[10px] font-black uppercase shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                     {tech}
                   </span>
                 ))}
               </div>
+            </div>
 
-              <h3 class="text-3xl font-bold text-black dark:text-white mb-3 tracking-tight">
+            <div class="p-8 flex flex-col flex-1">
+              <h3 class="text-4xl font-black text-black dark:text-white mb-4 tracking-tighter uppercase italic group-hover:text-blue-600 transition-colors">
                 {project.title}
               </h3>
 
-              <p class="text-gray-500 dark:text-neutral-400 text-sm leading-relaxed mb-8 line-clamp-3 font-medium">
+              <p class="text-zinc-600 dark:text-zinc-400 text-lg leading-tight mb-8 font-bold line-clamp-3">
                 {project.description}
               </p>
 
-              <div class="mt-auto flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    class="flex items-center gap-2 bg-black dark:bg-white text-white dark:text-black px-5 py-2.5 rounded-xl text-xs font-bold hover:bg-blue-600 dark:hover:bg-blue-500 transition-all shadow-lg shadow-gray-200 dark:shadow-none"
-                  >
-                    Live Demo
-                    <svg
-                      class="size-3"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                    </svg>
-                  </a>
+              <div class="mt-auto flex flex-wrap gap-4">
+                <a
+                  href={project.live}
+                  target="_blank"
+                  class="flex-1 text-center bg-blue-600 text-white border-4 border-black px-6 py-3 font-black uppercase text-sm shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-1 active:translate-y-1 transition-all"
+                >
+                  EJECUTAR_DEMO
+                </a>
 
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      class="flex items-center gap-2 bg-gray-100 dark:bg-white/5 text-black dark:text-white px-5 py-2.5 rounded-xl text-xs font-bold hover:bg-gray-200 dark:hover:bg-white/10 transition-all"
-                    >
-                      GitHub
-                      <svg
-                        class="size-4"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                      </svg>
-                    </a>
-                  )}
-                </div>
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    class="bg-white dark:bg-zinc-700 text-black dark:text-white border-4 border-black dark:border-white px-6 py-3 font-black uppercase text-sm shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] active:shadow-none active:translate-x-1 active:translate-y-1 transition-all"
+                  >
+                    GITHUB.SH
+                  </a>
+                )}
               </div>
             </div>
           </article>
@@ -140,6 +137,50 @@ const projects = [
   </div>
 </section>
 
+<style>
+  /* Animación de escaneo CRT */
+  @keyframes scanline {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(100vh);
+    }
+  }
+
+  /* Glitch sutil para los títulos al hacer hover */
+  .project-card:hover h3 {
+    animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+  }
+
+  @keyframes glitch {
+    0% {
+      transform: translate(0);
+    }
+    20% {
+      transform: translate(-2px, 2px);
+      text-shadow:
+        2px 0 red,
+        -2px 0 blue;
+    }
+    40% {
+      transform: translate(-2px, -2px);
+    }
+    60% {
+      transform: translate(2px, 2px);
+      text-shadow:
+        -2px 0 red,
+        2px 0 blue;
+    }
+    80% {
+      transform: translate(2px, -2px);
+    }
+    100% {
+      transform: translate(0);
+    }
+  }
+</style>
+
 <script>
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -147,88 +188,65 @@ const projects = [
   gsap.registerPlugin(ScrollTrigger);
 
   window.addEventListener("DOMContentLoaded", () => {
-    // 1. Entrada de cabecera
-    gsap.to("#project-header", {
-      opacity: 1,
-      y: 0,
-      duration: 1.2,
-      ease: "expo.out",
-      scrollTrigger: { trigger: "#project-header", start: "top 90%" },
+    // 1. Cabecera que entra desde arriba como una cortina
+    gsap.from("#project-header", {
+      y: -100,
+      opacity: 0,
+      duration: 1,
+      ease: "power4.out",
+      scrollTrigger: { trigger: "#project-header", start: "top 80%" },
     });
 
+    // 2. Animación de las tarjetas (Se "ensamblan")
     const cards = gsap.utils.toArray(".project-card");
 
-    cards.forEach((card: any) => {
-      // 2. Animación de entrada de la tarjeta
+    cards.forEach((card: any, i) => {
       gsap.fromTo(
         card,
-        { opacity: 0, y: 60 },
+        {
+          opacity: 0,
+          scale: 0.8,
+          rotationY: 20,
+          y: 100,
+        },
         {
           opacity: 1,
+          scale: 1,
+          rotationY: 0,
           y: 0,
-          duration: 1,
-          ease: "power4.out",
-          scrollTrigger: { trigger: card, start: "top 85%" },
+          duration: 0.8,
+          ease: "back.out(1.5)",
+          delay: i * 0.2, // Stagger manual para más control
+          scrollTrigger: {
+            trigger: card,
+            start: "top 90%",
+          },
         },
       );
 
-      // 3. EFECTO 3D SOLO EN LA IMAGEN
-      const container = card.querySelector(".project-image-container");
-      const img = card.querySelector(".project-img");
-
+      // Efecto de inclinación (Tilt) pero estilo Retro (más rígido)
       card.addEventListener("mousemove", (e: MouseEvent) => {
         const { clientX, clientY } = e;
-        const { left, top, width, height } = container.getBoundingClientRect();
+        const { left, top, width, height } = card.getBoundingClientRect();
+        const x = (clientX - left) / width - 0.5;
+        const y = (clientY - top) / height - 0.5;
 
-        const xPercent = (clientX - left) / width - 0.5;
-        const yPercent = (clientY - top) / height - 0.5;
-
-        // El contenedor rota sutilmente
-        gsap.to(container, {
-          rotationY: xPercent * 12,
-          rotationX: -yPercent * 12,
-          duration: 0.5,
-          ease: "power2.out",
-        });
-
-        // La imagen se desplaza en sentido contrario para profundidad
-        gsap.to(img, {
-          x: xPercent * -15,
-          y: yPercent * -15,
-          scale: 1.2, // Mantengo el scale para el efecto 'pop'
-          duration: 0.5,
+        gsap.to(card, {
+          rotationY: x * 10,
+          rotationX: -y * 10,
+          duration: 0.3,
           ease: "power2.out",
         });
       });
 
       card.addEventListener("mouseleave", () => {
-        gsap.to(container, {
+        gsap.to(card, {
           rotationY: 0,
           rotationX: 0,
           duration: 1,
-          ease: "elastic.out(1, 0.4)",
-        });
-        gsap.to(img, {
-          x: 0,
-          y: 0,
-          scale: 1.1, // Vuelve al scale base definido en la img clase
-          duration: 1,
-          ease: "elastic.out(1, 0.4)",
+          ease: "elastic.out(1, 0.3)",
         });
       });
     });
   });
 </script>
-
-<style>
-  .project-card {
-    will-change: transform, border-color;
-  }
-  .project-image-container {
-    transform-style: preserve-3d;
-    will-change: transform;
-  }
-  .project-img {
-    will-change: transform;
-  }
-</style>

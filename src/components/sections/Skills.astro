@@ -8,116 +8,122 @@ const techLogos = Object.entries(techIcons).map(([name, src]) => ({
 }));
 ---
 
-<section class="py-24 relative overflow-hidden transition-colors duration-300">
+<section
+  class="py-24 relative overflow-hidden bg-white dark:bg-zinc-900 border-t-4 border-black dark:border-white transition-colors duration-300"
+>
   <div
-    class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-100 dark:via-white/5 to-transparent"
+    class="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] [background-size:40px_40px]"
   >
   </div>
 
   <div class="max-w-6xl mx-auto px-6">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start mb-24">
-      <div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start mb-20">
+      <div class="relative">
         <span
-          class="text-blue-600 dark:text-blue-400 text-xs font-bold tracking-widest uppercase bg-blue-50 dark:bg-blue-500/10 px-3 py-1 rounded-md"
+          class="inline-block border-2 border-black bg-blue-600 text-white text-xs font-black tracking-[0.2em] uppercase px-4 py-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-6"
         >
-          Trayectoria
+          SISTEMA // TRAYECTORIA
         </span>
+
         <h3
-          class="text-4xl md:text-5xl font-extrabold text-black dark:text-white tracking-tighter mt-4 mb-6"
+          class="text-6xl md:text-7xl font-black text-black dark:text-white tracking-tighter uppercase italic leading-none"
         >
-          Sobre mí
+          Sobre <span
+            class="text-blue-600 underline decoration-8 decoration-black dark:decoration-white"
+            >mí</span
+          >
         </h3>
-        <div class="w-12 h-1 bg-blue-600 dark:bg-blue-500 rounded-full mb-6">
-        </div>
       </div>
 
-      <div>
+      <div class="border-l-4 border-black dark:border-white pl-8 py-2">
         <p
-          class="text-gray-500 dark:text-gray-400 text-lg md:text-xl leading-relaxed font-normal"
+          class="text-black dark:text-zinc-200 text-xl md:text-2xl leading-tight font-bold mb-6"
         >
-          Soy <span class="text-black dark:text-white font-semibold italic"
-            >Walter</span
-          >, desarrollador de software con pasión por crear soluciones web
-          modernas. Me especializo en transformar ideas complejas en interfaces <span
-            class="text-blue-600 dark:text-blue-400 underline decoration-blue-200 dark:decoration-blue-500/30 underline-offset-4"
-            >simples y potentes</span
-          >.
+          Soy <span class="bg-yellow-300 text-black px-2">Walter</span>,
+          desarrollador de software con pasión por crear soluciones web
+          modernas.
         </p>
         <p
-          class="text-gray-400 dark:text-gray-500 mt-4 text-sm md:text-base leading-relaxed"
+          class="text-zinc-600 dark:text-zinc-400 text-lg leading-relaxed font-medium"
         >
-          Focalizado en la escalabilidad y el rendimiento, siempre buscando la
-          excelencia técnica en cada línea de código.
+          Me especializo en transformar ideas complejas en interfaces potentes.
+          Focalizado en la escalabilidad, siempre buscando la excelencia técnica
+          en cada línea de código.
         </p>
       </div>
     </div>
 
     <div
-      class="rounded-3xl border border-gray-100 dark:border-white/5 bg-transparent dark:bg-white/[0.01] p-8 md:p-12"
+      class="border-4 border-black dark:border-white bg-white dark:bg-zinc-800 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] dark:shadow-[12px_12px_0px_0px_rgba(255,255,255,1)] overflow-hidden"
     >
       <div
-        class="flex flex-col md:flex-row justify-between items-center mb-10 gap-4"
+        class="bg-black dark:bg-white px-6 py-2 flex justify-between items-center"
       >
         <h3
-          class="text-sm font-bold text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em]"
+          class="text-xs font-black text-white dark:text-black uppercase tracking-[0.3em]"
         >
-          Stack Tecnológico
+          Hardware_Stack.exe
         </h3>
+        <div class="flex gap-2">
+          <div class="size-3 border-2 border-white dark:border-black"></div>
+          <div
+            class="size-3 border-2 border-white dark:border-black bg-white dark:bg-black"
+          >
+          </div>
+        </div>
+      </div>
+
+      <div class="p-8 md:p-12 border-t-4 border-black dark:border-white">
+        <div class="relative w-full">
+          <div
+            class="flex items-center grayscale hover:grayscale-0 transition-all duration-500"
+          >
+            <LogoLoop
+              logos={techLogos}
+              speed={40}
+              direction="left"
+              logoHeight={45}
+              gap={100}
+              hoverSpeed={5}
+              scaleOnHover
+              ariaLabel="Tecnologías que utilizo"
+              client:load
+            />
+          </div>
+        </div>
+
         <div
-          class="h-px flex-1 bg-gray-200 dark:bg-white/5 hidden md:block ml-8"
+          class="mt-10 pt-6 border-t-2 border-dashed border-black dark:border-zinc-600 flex flex-col md:flex-row justify-between items-center gap-4"
         >
+          <p
+            class="text-xs text-black dark:text-zinc-400 font-black uppercase italic"
+          >
+            * OPTIMIZANDO FLUJO DE TRABAJO CONSTANTEMENTE
+          </p>
+          <span
+            class="bg-black text-white dark:bg-white dark:text-black text-[10px] px-2 py-0.5 font-bold animate-pulse"
+          >
+            STATUS: ACTIVE
+          </span>
         </div>
       </div>
-
-      <div class="relative w-full">
-        <div class="flex items-center">
-          <LogoLoop
-            logos={techLogos}
-            speed={60}
-            direction="left"
-            logoHeight={35}
-            gap={80}
-            hoverSpeed={10}
-            scaleOnHover
-            fadeOut
-            fadeOutColor="var(--loop-fade)"
-            ariaLabel="Tecnologías que utilizo"
-            client:load
-          />
-        </div>
-      </div>
-
-      <p
-        class="text-center text-xs text-gray-400 dark:text-gray-600 mt-10 font-medium italic"
-      >
-        * Siempre aprendiendo nuevas herramientas para optimizar el flujo de
-        trabajo.
-      </p>
     </div>
   </div>
 </section>
 
-<style>
-  /* Variables dinámicas ajustadas al fondo real del Layout */
-  section {
-    --loop-fade: #ffffff; /* Blanco puro para modo claro */
-  }
-  :global(.dark) section {
-    --loop-fade: #000000; /* Negro puro para modo oscuro */
+<style is:global>
+  /* Limpieza de filtros para que los logos se vean nítidos en modo retro */
+  .logo-item {
+    filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.5)) !important;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
   }
 
-  /* Filtros de los logos */
-  :global(.logo-item) {
-    filter: grayscale(1) opacity(0.5);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  .dark .logo-item {
+    filter: brightness(0) invert(1)
+      drop-shadow(2px 2px 0px rgba(255, 255, 255, 0.5)) !important;
   }
 
-  :global(.dark .logo-item) {
-    filter: grayscale(1) invert(0.1) opacity(0.4);
-  }
-
-  :global(.logo-item:hover) {
-    filter: grayscale(0) opacity(1) !important;
-    transform: scale(1.1);
+  .logo-item:hover {
+    transform: scale(1.2) rotate(-3deg) !important;
   }
 </style>

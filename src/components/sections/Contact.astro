@@ -1,76 +1,185 @@
 ---
+import { Heart } from "lucide-react";
+
 // Contacto.astro
 ---
 
 <section
   id="contacto"
-  class="py-24 bg-transparent border-t border-gray-100 dark:border-white/5 transition-colors duration-300"
+  class="py-32 bg-yellow-50 dark:bg-zinc-900 border-t-8 border-black dark:border-white transition-colors duration-300 relative overflow-hidden"
 >
-  <div class="max-w-4xl mx-auto px-6 text-center">
-    <div id="contact-content" class="opacity-0 translate-y-8">
-      <h4
-        class="text-4xl md:text-6xl font-extrabold text-black dark:text-white tracking-tighter mb-4 uppercase italic"
-      >
-        Hablemos<span class="text-blue-600">.</span>
-      </h4>
+  <div
+    class="absolute inset-0 opacity-[0.15] dark:opacity-[0.05] pointer-events-none bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:20px_20px]"
+  >
+  </div>
 
-      <p
-        class="text-gray-500 dark:text-neutral-400 text-lg md:text-xl mb-12 font-medium"
+  <div class="max-w-4xl mx-auto px-6 relative z-10">
+    <div class="mb-16 text-center lg:text-left">
+      <h2
+        id="contact-title"
+        class="text-5xl sm:text-6xl md:text-8xl font-black text-black dark:text-white uppercase italic tracking-tighter leading-none"
       >
-        Respondo más rápido si hay un repo de por medio. <br
-          class="hidden md:block"
-        />
-        <span class="text-blue-600 dark:text-blue-400 italic"
-          >Colaborar con proyectos es lo mío ;)</span
+        ¿Hablamos<span class="text-blue-600">?</span>
+      </h2>
+      <p
+        class="mt-4 text-xl font-bold text-zinc-600 dark:text-zinc-400 uppercase tracking-widest"
+      >
+        ESTADO: <span class="text-green-600 animate-pulse"
+          >DISPONIBLE PARA PROYECTOS</span
         >
       </p>
-
-      <a
-        href="mailto:socamezareswalter@gmail.com"
-        class="group relative inline-block text-sm md:text-5xl font-black text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors tracking-tighter break-all"
-      >
-        socamezareswalter@gmail.com
-        <span
-          class="absolute -bottom-2 left-0 w-0 h-1 bg-blue-600 transition-all duration-300 group-hover:w-full"
-        ></span>
-      </a>
     </div>
 
-    <footer
-      class="mt-32 pt-12 border-t border-gray-100 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-8"
+    <div
+      id="contact-window"
+      class="opacity-0 border-4 border-black dark:border-white bg-white dark:bg-zinc-800 shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] dark:shadow-[16px_16px_0px_0px_rgba(37,99,235,1)] overflow-hidden"
     >
-      <div class="flex flex-col items-center md:items-start gap-2">
-        <p
-          class="text-gray-400 dark:text-neutral-600 text-[10px] uppercase tracking-[0.3em] font-black"
-        >
-          © 2026 — Hecho por Walter Soca
-        </p>
+      <div
+        class="bg-black dark:bg-white p-3 flex justify-between items-center border-b-4 border-black dark:border-white"
+      >
+        <div class="flex gap-2">
+          <div class="size-4 bg-red-500 border-2 border-black"></div>
+          <div class="size-4 bg-yellow-400 border-2 border-black"></div>
+          <div class="size-4 bg-green-500 border-2 border-black"></div>
+        </div>
         <span
-          class="text-[9px] text-blue-600/50 dark:text-blue-400/30 font-bold uppercase tracking-widest"
+          class="text-[10px] font-black text-white dark:text-black uppercase tracking-[0.4em]"
         >
-          Lima, Perú
+          NOLDEE_MAILER.SYS
         </span>
       </div>
 
-      <nav class="flex gap-8">
-        <a
-          href="https://github.com/noldee"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-gray-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors text-xs font-black uppercase tracking-[0.2em]"
+      <div class="p-8 md:p-12">
+        <form class="space-y-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="field-container opacity-0">
+              <label
+                class="block text-xs font-black uppercase mb-2 dark:text-white tracking-widest"
+                >>> TU_NOMBRE</label
+              >
+              <input
+                type="text"
+                placeholder="Escribe aquí..."
+                class="w-full bg-zinc-100 dark:bg-zinc-700 border-4 border-black dark:border-white p-4 font-bold text-black dark:text-white focus:bg-yellow-200 dark:focus:bg-blue-900 outline-none transition-colors"
+              />
+            </div>
+            <div class="field-container opacity-0">
+              <label
+                class="block text-xs font-black uppercase mb-2 dark:text-white tracking-widest"
+                >>> TU_EMAIL</label
+              >
+              <input
+                type="email"
+                placeholder="ejemplo@correo.com"
+                class="w-full bg-zinc-100 dark:bg-zinc-700 border-4 border-black dark:border-white p-4 font-bold text-black dark:text-white focus:bg-yellow-200 dark:focus:bg-blue-900 outline-none transition-colors"
+              />
+            </div>
+          </div>
+
+          <div class="field-container opacity-0">
+            <label
+              class="block text-xs font-black uppercase mb-2 dark:text-white tracking-widest"
+              >>> MENSAJE.LOG</label
+            >
+            <textarea
+              rows="4"
+              placeholder="¿En qué puedo ayudarte?"
+              class="w-full bg-zinc-100 dark:bg-zinc-700 border-4 border-black dark:border-white p-4 font-bold text-black dark:text-white focus:bg-yellow-200 dark:focus:bg-blue-900 outline-none transition-colors"
+            ></textarea>
+          </div>
+
+          <div class="field-container opacity-0 pt-4 text-center">
+            <button
+              type="submit"
+              class="group relative inline-flex items-center justify-center px-8 py-4 font-black text-xl uppercase tracking-tighter bg-blue-600 text-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 active:bg-yellow-400 active:text-black transition-all w-full md:w-auto"
+            >
+              ENVIAR_MENSAJE
+              <svg
+                class="ml-3 size-6 transition-transform group-hover:translate-x-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </button>
+          </div>
+        </form>
+
+        <div
+          class="mt-12 pt-8 border-t-4 border-dashed border-zinc-200 dark:border-zinc-700"
         >
-          GitHub
-        </a>
-        <a
-          href="https://www.linkedin.com/in/walter-soca-mezares-5b158b3b0/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-gray-500 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-xs font-black uppercase tracking-[0.2em]"
+          <p
+            class="text-xs font-black text-zinc-400 dark:text-zinc-500 uppercase mb-4 tracking-[0.2em]"
+          >
+            O vía correo directo:
+          </p>
+          <a
+            href="mailto:socamezareswalter@gmail.com"
+            class="text-2xl md:text-3xl font-black text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 break-all transition-colors decoration-4 underline decoration-yellow-300 dark:decoration-blue-600 underline-offset-8"
+          >
+            socamezareswalter@gmail.com
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <footer
+      class="mt-32 pt-12 border-t-8 border-black dark:border-white flex flex-col md:flex-row justify-between items-end gap-8 pb-12"
+    >
+      <div class="space-y-2">
+        <p
+          class="text-4xl font-black tracking-tighter text-black dark:text-white uppercase italic"
         >
-          LinkedIn
-        </a>
+          Walter Soca
+        </p>
+        <div class="flex gap-4">
+          <span
+            class="bg-black text-white dark:bg-white dark:text-black text-[10px] px-2 py-1 font-bold uppercase"
+            >LIMA_PERU</span
+          >
+          <span
+            class="bg-blue-600 text-white text-[10px] px-2 py-1 font-bold uppercase"
+            >© 2026</span
+          >
+        </div>
+      </div>
+
+      <nav class="flex flex-wrap gap-6">
+        {
+          ["GitHub", "LinkedIn", "Instagram"].map((social) => (
+            <a
+              href="#"
+              class="text-sm font-black uppercase tracking-widest text-black dark:text-white hover:bg-yellow-300 dark:hover:bg-blue-600 hover:text-black p-2 border-2 border-transparent hover:border-black transition-all"
+            >
+              {social}
+            </a>
+          ))
+        }
       </nav>
     </footer>
+    <div class="mt-8 flex justify-center lg:justify-start">
+      <a
+        href="https://www.retroui.dev/"
+        target="_blank"
+        class="group relative inline-flex items-center gap-2 bg-yellow-300 px-4 py-2 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all -rotate-2 hover:rotate-0"
+      >
+        <span
+          class="text-[10px] font-black uppercase tracking-tighter text-black"
+        >
+          Inspirado en: <span class="underline decoration-black/30"
+            >RetroUI</span
+          >
+        </span>
+        <div class="text-red-500 group-hover:scale-125 transition-transform">
+          <Heart />
+        </div>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -81,15 +190,68 @@
   gsap.registerPlugin(ScrollTrigger);
 
   window.addEventListener("DOMContentLoaded", () => {
-    gsap.to("#contact-content", {
-      opacity: 1,
-      y: 0,
-      duration: 1.2,
-      ease: "power4.out",
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: "#contacto",
-        start: "top 85%",
+        start: "top 70%",
       },
     });
+
+    // 1. Animación del Título (Efecto de caída)
+    tl.from("#contact-title", {
+      y: -50,
+      opacity: 0,
+      rotateX: -90,
+      duration: 0.8,
+      ease: "back.out(1.7)",
+    });
+
+    // 2. La ventana aparece con un efecto de "pop" elástico
+    tl.to(
+      "#contact-window",
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 0.6,
+        ease: "elastic.out(1, 0.5)",
+      },
+      "-=0.4",
+    );
+
+    // 3. Los campos del formulario entran en cascada
+    tl.to(
+      ".field-container",
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.15,
+        duration: 0.5,
+        ease: "power2.out",
+      },
+      "-=0.2",
+    );
   });
 </script>
+
+<style>
+  /* Reset de estado para animación */
+  #contact-window {
+    transform: scale(0.95);
+    transform-origin: center top;
+  }
+  .field-container {
+    transform: translateY(20px);
+  }
+
+  /* Efecto de foco retro */
+  input:focus,
+  textarea:focus {
+    box-shadow: 4px 4px 0px 0px #2563eb;
+    transform: translate(-2px, -2px);
+  }
+
+  :global(.dark) input:focus,
+  :global(.dark) textarea:focus {
+    box-shadow: 4px 4px 0px 0px #ffffff;
+  }
+</style>

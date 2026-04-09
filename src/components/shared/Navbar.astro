@@ -1,200 +1,237 @@
 ---
-import ButtonDownload from "../ui/ButtonDownload.astro";
+import ExternalLink from "../icons/ExternalLink.astro";
 import { ModeToggle } from "../ui/ModeToggle";
 import NavLink from "../ui/NavLink.astro";
 ---
 
 <header
-  class="sticky top-0 z-[100] w-full border-b border-gray-100 dark:border-white/10 bg-white/80 dark:bg-black/80 backdrop-blur-md"
+  class="relative w-full border-b-4 border-black bg-white dark:bg-zinc-900 dark:border-white z-[100]"
 >
   <div class="max-w-6xl mx-auto flex justify-between items-center py-4 px-6">
-    <a href="/" class="flex items-center gap-2 group z-[120]">
+    <a
+      href="/"
+      class="z-[120] border-2 border-black bg-blue-600 px-3 py-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all"
+    >
       <h2
-        class="text-xl font-bold tracking-tighter text-black dark:text-white uppercase"
+        class="text-xl font-black tracking-tighter text-white uppercase italic"
       >
-        Noldee<span class="text-blue-600">
+        Noldee
       </h2>
     </a>
 
-    <div class="flex items-center gap-6">
+    <div class="flex items-center gap-4 md:gap-8">
       <nav
-        class="hidden md:flex items-center gap-x-8 text-sm font-medium text-gray-500 dark:text-gray-400"
+        class="hidden md:flex items-center gap-x-6 text-sm font-bold text-black dark:text-white uppercase"
       >
         <NavLink
-          className="hover:text-blue-600 transition-colors"
+          className="hover:underline decoration-4 decoration-blue-600 underline-offset-4"
           href="/"
           title="Inicio"
         />
         <NavLink
-          className="hover:text-blue-600 transition-colors"
+          className="hover:underline decoration-4 decoration-blue-600 underline-offset-4"
           href="#experiencia"
           title="Experiencia"
         />
         <NavLink
-          className="hover:text-blue-600 transition-colors"
+          className="hover:underline decoration-4 decoration-blue-600 underline-offset-4"
           href="#proyectos"
           title="Proyectos"
         />
         <NavLink
-          className="hover:text-blue-600 transition-colors"
+          className="hover:underline decoration-4 decoration-blue-600 underline-offset-4"
           href="/blog"
           title="Blog"
         />
         <NavLink
-          className="hover:text-blue-600 transition-colors"
+          className="hover:underline decoration-4 decoration-blue-600 underline-offset-4"
           href="#contacto"
           title="Contacto"
         />
       </nav>
 
-      <div class="hidden md:block">
-        <ButtonDownload />
-      </div>
-      <ModeToggle client:load />
+      <div class="flex items-center gap-4">
+        <div class="hidden md:block">
+          <ExternalLink
+            className="border-2 border-black bg-yellow-400 px-4 py-2 font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all inline-block"
+            href="/CV.pdf"
+            download="CV-WALTER-SOCA"
+          >
+            Descargar CV
+          </ExternalLink>
+        </div>
 
-      <button
-        id="menu-toggle"
-        aria-label="Menu"
-        class="relative z-[120] md:hidden flex flex-col justify-center items-end size-10 gap-[6px] group"
-      >
-        <span
-          class="line w-7 h-[2px] bg-black dark:bg-white rounded-full transition-all duration-300"
-        ></span>
-        <span
-          class="line w-5 h-[2px] bg-black dark:bg-white rounded-full transition-all duration-300 group-hover:w-7"
-        ></span>
-        <span
-          class="line w-7 h-[2px] bg-black dark:bg-white rounded-full transition-all duration-300"
-        ></span>
-      </button>
+        <div class="retro-mode-toggle">
+          <ModeToggle client:load />
+        </div>
+
+        <button
+          id="menu-toggle"
+          aria-label="Menu"
+          class="md:hidden border-2 border-black p-2 bg-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-[1px] active:translate-y-[1px]"
+        >
+          <div class="flex flex-col gap-1 w-6">
+            <span class="h-1 w-full bg-black"></span>
+            <span class="h-1 w-full bg-black"></span>
+            <span class="h-1 w-full bg-black"></span>
+          </div>
+        </button>
+      </div>
     </div>
   </div>
 
   <div
     id="mobile-menu"
-    class="fixed inset-0 w-full h-screen bg-white dark:bg-black z-[110] flex flex-col items-center justify-center opacity-0 pointer-events-none"
+    class="fixed inset-4 border-4 border-black bg-white dark:bg-zinc-900 z-[150] flex flex-col items-center justify-center hidden opacity-0 shadow-[10px_10px_0px_0px_rgba(0,0,0,1)]"
   >
     <div
-      class="absolute inset-0 -z-10 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff10_1px,transparent_1px)] [background-size:20px_20px] opacity-40"
+      class="absolute top-0 left-0 w-full bg-black text-white px-4 py-1 flex justify-between items-center"
     >
+      <span class="font-bold text-xs uppercase tracking-widest italic"
+        >Noldee_Menu.sh</span
+      >
+      <button
+        id="close-menu"
+        class="bg-red-500 border-2 border-white size-6 flex items-center justify-center text-xs font-bold hover:bg-red-600"
+        >X</button
+      >
     </div>
 
-    <nav class="flex flex-col items-center gap-y-8 w-full px-10">
+    <nav class="flex flex-col items-center gap-y-4 w-full px-8">
       {
         ["Inicio", "Experiencia", "Proyectos", "Blog", "Contacto"].map(
           (text) => (
-            <div class="overflow-hidden">
-              <a
-                href={
-                  text === "Inicio"
-                    ? "/"
-                    : text === "Blog"
-                      ? "/blog"
-                      : `#${text.toLowerCase()}`
-                }
-                class="mobile-link block text-5xl font-black text-black dark:text-white tracking-tighter hover:text-blue-600 transition-colors uppercase italic pr-4"
-              >
-                {text}
-              </a>
-            </div>
+            <a
+              href={
+                text === "Inicio"
+                  ? "/"
+                  : text === "Blog"
+                    ? "/blog"
+                    : `#${text.toLowerCase()}`
+              }
+              class="mobile-link text-3xl font-black text-black dark:text-white uppercase hover:bg-blue-600 hover:text-white px-4 py-2 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all w-full text-center bg-white dark:bg-zinc-800"
+            >
+              {text}
+            </a>
           ),
         )
       }
 
-      <div class="mobile-link-btn mt-8 opacity-0 translate-y-4">
-        <ButtonDownload />
-      </div>
-    </nav>
-
-    <div class="absolute bottom-12 flex flex-col items-center gap-2">
-      <span class="text-xs font-bold text-gray-400 uppercase tracking-widest"
-        >Connect with me</span
+      <a
+        href="CV.pdf"
+        download
+        class="mobile-link mt-4 flex items-center justify-center gap-3 text-3xl font-black text-black uppercase bg-green-400 hover:bg-yellow-300 px-4 py-3 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-1 active:translate-y-1 transition-all w-full text-center"
       >
-      <div class="h-px w-8 bg-gray-200 dark:bg-white/20"></div>
-    </div>
+        <svg
+          class="size-8 animate-bounce"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="3"
+            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+          ></path>
+        </svg>
+        Descargar_CV
+      </a>
+    </nav>
   </div>
 </header>
+
+<style is:global>
+  /* ESTILOS PARA ARREGLAR EL DROPDOWN DEL MODO OSCURO */
+
+  /* Forzamos el contenedor del menú (Radix/Shadcn suele usar estos roles) */
+  [role="menu"],
+  [data-radix-menu-content] {
+    background-color: white !important;
+    border: 3px solid black !important;
+    border-radius: 0px !important;
+    box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1) !important;
+    padding: 4px !important;
+    min-width: 140px !important;
+  }
+
+  .dark [role="menu"],
+  .dark [data-radix-menu-content] {
+    background-color: #18181b !important; /* zinc-900 */
+    border-color: white !important;
+    box-shadow: 6px 6px 0px 0px rgba(255, 255, 255, 1) !important;
+  }
+
+  /* Items del menú */
+  [role="menuitem"] {
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    font-size: 12px !important;
+    border-radius: 0px !important;
+    padding: 8px !important;
+    cursor: pointer !important;
+  }
+
+  [role="menuitem"]:hover {
+    background-color: #2563eb !important; /* blue-600 */
+    color: white !important;
+  }
+
+  /* El botón que activa el menú */
+  .retro-mode-toggle button {
+    border: 2px solid black !important;
+    border-radius: 0px !important;
+    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 1) !important;
+    transition: all 0.1s !important;
+    background: white !important;
+  }
+
+  .dark .retro-mode-toggle button {
+    background: #18181b !important;
+    border-color: white !important;
+    box-shadow: 3px 3px 0px 0px rgba(255, 255, 255, 1) !important;
+    color: white !important;
+  }
+
+  .retro-mode-toggle button:active {
+    box-shadow: none !important;
+    transform: translate(2px, 2px) !important;
+  }
+</style>
 
 <script>
   import { gsap } from "gsap";
 
   const menuToggle = document.querySelector("#menu-toggle");
-  const mobileMenu = document.querySelector("#mobile-menu");
-  const lines = document.querySelectorAll(".line");
+  const closeMenu = document.querySelector("#close-menu");
+  const mobileMenu = document.querySelector("#mobile-menu") as HTMLDivElement;
   const mobileLinks = document.querySelectorAll(".mobile-link");
-  const mobileBtn = document.querySelector(".mobile-link-btn");
 
   let isOpen = false;
 
-  const menuTl = gsap.timeline({ paused: true });
-
-  menuTl
-    .to(mobileMenu, {
-      opacity: 1,
-      pointerEvents: "auto",
-      duration: 0.5,
-      ease: "power4.inOut",
-    })
-    .from(
-      mobileLinks,
-      {
-        y: 100,
-        stagger: 0.1,
-        duration: 0.8,
-        ease: "power4.out",
-      },
-      "-=0.2",
-    )
-    .to(
-      mobileBtn,
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.4,
-      },
-      "-=0.4",
-    );
-
   function toggleMenu() {
     isOpen = !isOpen;
-
     if (isOpen) {
-      // Bloqueo de salto de scroll
-      const scrollBarWidth =
-        window.innerWidth - document.documentElement.clientWidth;
-      document.body.style.paddingRight = `${scrollBarWidth}px`;
+      mobileMenu.classList.remove("hidden");
       document.body.style.overflow = "hidden";
-
-      gsap.to(lines[0], {
-        y: 8,
-        rotation: 45,
-        duration: 0.4,
-        ease: "power4.inOut",
+      gsap.to(mobileMenu, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.3,
+        ease: "back.out(1.2)",
       });
-      gsap.to(lines[1], { width: 0, opacity: 0, duration: 0.2 });
-      gsap.to(lines[2], {
-        y: -8,
-        rotation: -45,
-        duration: 0.4,
-        ease: "power4.inOut",
-      });
-
-      menuTl.play();
     } else {
       document.body.style.overflow = "auto";
-      document.body.style.paddingRight = "";
-
-      gsap.to(lines[0], { y: 0, rotation: 0, duration: 0.4 });
-      gsap.to(lines[1], { width: "1.25rem", opacity: 1, duration: 0.3 });
-      gsap.to(lines[2], { y: 0, rotation: 0, duration: 0.4 });
-
-      menuTl.reverse();
+      gsap.to(mobileMenu, {
+        opacity: 0,
+        scale: 0.9,
+        duration: 0.2,
+        onComplete: () => mobileMenu.classList.add("hidden"),
+      });
     }
   }
 
   menuToggle?.addEventListener("click", toggleMenu);
-
-  mobileLinks.forEach((link) => {
-    link.addEventListener("click", toggleMenu);
-  });
+  closeMenu?.addEventListener("click", toggleMenu);
+  mobileLinks.forEach((link) => link.addEventListener("click", toggleMenu));
 </script>
