@@ -1,89 +1,68 @@
 ---
-// Datos de tu trayectoria profesional
 const experience = [
   {
-    role: "Desarrollador Frontend (Practicante)",
+    role: "Desarrollador Frontend",
     company: "LA BRUJA STORE",
-    period: "Marzo 2024 — Junio 2024",
+    period: "Mar 2024 — Jun 2024",
     description:
       "Optimización del panel administrativo de e-commerce para la gestión de inventarios y cotizaciones. Implementación de mejoras en accesibilidad y tiempos de carga utilizando Spring Boot y MySQL.",
     stack: ["Spring Boot", "MySQL", "React"],
   },
   {
-    role: "Desarrollador Backend (Practicante)",
+    role: "Desarrollador Backend",
     company: "WISBAC",
-    period: "Septiembre 2023 — Diciembre 2023",
+    period: "Sep 2023 — Dic 2023",
     description:
-      "Diseño y desarrollo de servicios para la administración y generación de reportes automatizados utilizando PHP y jQuery. Integración de diversos sistemas para centralizar la información de tablas.",
+      "Diseño y desarrollo de servicios para la administración y generación de reportes automatizados utilizando PHP y jQuery. Integración de diversos sistemas para centralizar la información.",
     stack: ["PHP", "jQuery", "MySQL"],
   },
 ];
 ---
 
-<section
-  id="experiencia"
-  class="py-24 relative bg-white dark:bg-zinc-900 overflow-hidden border-t-4 border-black dark:border-white transition-colors duration-300"
->
-  <div
-    class="absolute left-0 top-0 h-full w-12 border-r-2 border-dashed border-zinc-200 dark:border-zinc-800 hidden lg:block"
-  >
-  </div>
-
-  <div class="max-w-4xl mx-auto px-6 relative">
-    <div class="mb-20">
-      <h3
-        id="exp-title"
-        class="text-5xl sm:text-6xl md:text-8xl font-black tracking-tighter text-black dark:text-white uppercase italic"
+<section id="experiencia" class="py-24 border-t border-[var(--border)]">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="mb-16">
+      <span
+        class="text-xs font-mono text-[var(--green)] tracking-widest uppercase mb-4 block"
       >
-        Experiencia<span class="text-blue-600">_</span>
-      </h3>
+      <h2
+        class="text-5xl md:text-6xl font-display text-[var(--text)] leading-none"
+      >
+        Experiencia
+      </h2>
     </div>
 
-    <div class="relative">
-      <div
-        id="timeline-line"
-        class="absolute left-4 md:left-0 top-0 w-1 bg-black dark:bg-white h-0 origin-top"
-      >
-      </div>
+    <div class="space-y-0">
+      {
+        experience.map((item, i) => (
+          <div class="exp-card group border-t border-[var(--border)] py-10 grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6 md:gap-16 hover:bg-[var(--surface)] transition-colors px-4 -mx-4">
+            <div>
+              <p class="text-xs font-mono text-[var(--green)] uppercase tracking-widest mb-1">
+                {item.company}
+              </p>
+              <p class="text-sm text-[var(--text-muted)]">{item.period}</p>
+            </div>
 
-      <div class="space-y-12">
-        {
-          experience.map((item) => (
-            <div class="exp-card relative pl-12 md:pl-16 opacity-0">
-              <div class="exp-dot absolute left-[10px] md:left-[-6px] top-2 size-4 bg-yellow-300 border-2 border-black z-10" />
-
-              <div class="group border-4 border-black dark:border-white bg-white dark:bg-zinc-800 p-6 md:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-200">
-                <div class="flex flex-col gap-2 mb-4">
-                  <div class="flex justify-between items-start flex-wrap gap-2">
-                    <h4 class="text-xs font-black text-blue-600 dark:text-blue-400 uppercase tracking-[0.3em]">
-                      {item.company}
-                    </h4>
-                    <span class="bg-black text-white dark:bg-white dark:text-black px-2 py-0.5 text-[10px] font-bold uppercase">
-                      {item.period}
-                    </span>
-                  </div>
-
-                  <h3 class="text-2xl sm:text-3xl md:text-4xl font-black text-black dark:text-white tracking-tight uppercase leading-none">
-                    {item.role}
-                  </h3>
-                </div>
-
-                <p class="text-zinc-600 dark:text-zinc-300 text-lg leading-tight mb-8 font-medium border-l-4 border-zinc-200 dark:border-zinc-700 pl-4">
-                  {item.description}
-                </p>
-
-                <div class="flex flex-wrap gap-2">
-                  {item.stack.map((tech) => (
-                    <span class="px-3 py-1 bg-zinc-100 dark:bg-zinc-700 text-[10px] font-black text-black dark:text-white border-2 border-black dark:border-white uppercase tracking-tighter shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+            <div>
+              <h3 class="text-xl font-display text-[var(--text)] mb-3 leading-tight">
+                {item.role}
+              </h3>
+              <p class="text-[var(--text-muted)] text-base leading-relaxed mb-5">
+                {item.description}
+              </p>
+              <div class="flex flex-wrap gap-2">
+                {item.stack.map((tech) => (
+                  <span class="px-2.5 py-1 text-xs font-mono text-[var(--text-muted)] border border-[var(--border)] bg-[var(--surface-2)]">
+                    {tech}
+                  </span>
+                ))}
               </div>
             </div>
-          ))
-        }
-      </div>
+          </div>
+        ))
+      }
+      <!-- Línea final -->
+      <div class="border-t border-[var(--border)]"></div>
     </div>
   </div>
 </section>
@@ -91,69 +70,17 @@ const experience = [
 <script>
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
-
   gsap.registerPlugin(ScrollTrigger);
 
-  window.addEventListener("DOMContentLoaded", () => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#experiencia",
-        start: "top 70%",
-      },
-    });
-
-    // 1. Animamos el título con un efecto de "escritura" o glitch
-    tl.from("#exp-title", {
-      x: -100,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power4.out",
-    });
-
-    // 2. Dibujamos la línea vertical hacia abajo
-    tl.to(
-      "#timeline-line",
-      {
-        height: "100%",
-        duration: 1.2,
-        ease: "none",
-      },
-      "-=0.4",
-    );
-
-    // 3. Hacemos aparecer cada tarjeta con un efecto de "pop-up" lateral
-    tl.to(
-      ".exp-card",
-      {
-        opacity: 1,
-        x: 0,
-        duration: 0.6,
-        stagger: 0.4, // Tiempo entre cada tarjeta
-        ease: "back.out(1.2)", // Ese rebote mecánico
-        onStart: function () {
-          // Podrías añadir un sonido de 'click' aquí si quisieras
-        },
-      },
-      "-=0.8",
-    );
-
-    // 4. Animación extra para los puntos de la línea de tiempo
-    tl.from(
-      ".exp-dot",
-      {
-        scale: 0,
-        rotation: 45,
-        stagger: 0.4,
-        duration: 0.4,
-        ease: "back.out(2)",
-      },
-      "-=1.2",
-    );
+  gsap.from(".exp-card", {
+    y: 20,
+    opacity: 0,
+    duration: 0.5,
+    stagger: 0.2,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: "#experiencia",
+      start: "top 75%",
+    },
   });
 </script>
-
-<style>
-  .exp-card {
-    transform: translateX(-20px);
-  }
-</style>

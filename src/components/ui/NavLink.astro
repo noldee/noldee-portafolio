@@ -3,11 +3,12 @@ interface Props {
   href: string;
   title: string;
   className?: string;
+  download?: boolean
 }
 
-const { title, href, className } = Astro.props;
+const { title, href, download,className } = Astro.props;
 ---
 
-<a href={href} class=`text-sm md:text-lg  transition-colors ${className}`
+<a href={href} download={download} class=`text-sm md:text-lg  transition-colors ${className}`
   >{title}</a
 >

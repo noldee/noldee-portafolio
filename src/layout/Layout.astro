@@ -21,10 +21,8 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-
     <meta name="description" content={description} />
     <meta property="og:image" content={image} />
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -34,123 +32,61 @@ const {
     <title>{title}</title>
   </head>
 
-  <body
-    class="antialiased text-neutral-900 dark:text-neutral-100 selection:bg-yellow-300 selection:text-black overflow-x-hidden"
-  >
-    <div
-      id="retro-cursor"
-      class="fixed pointer-events-none z-[9999] hidden md:block opacity-0"
-    >
-      <svg
-        width="24"
-        height="32"
-        viewBox="0 0 24 32"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        class="origin-top-left transition-transform duration-300"
-      >
-        <path
-          d="M1 1 L1 31 L8 24 L23 24 Z"
-          stroke="black"
-          stroke-width="3"
-          stroke-linecap="square"
-          stroke-linejoin="miter"></path>
-        <path d="M1 1 L1 31 L8 24 L23 24 Z" fill="#fde047"></path>
-        <circle cx="5" cy="18" r="2" fill="black" class="animate-pulse"
-        ></circle>
-      </svg>
-    </div>
-
-    <div class="fixed inset-0 -z-50 pointer-events-none">
-      <div
-        class="absolute inset-0 bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300"
-      >
-      </div>
-      <div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"></div>
-      <div
-        class="absolute inset-0 opacity-[0.02] pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]"
-      >
-      </div>
-    </div>
-
+  <body class="antialiased text-neutral-100 overflow-x-hidden">
     <main class="relative z-10 w-full">
       <slot />
     </main>
   </body>
 </html>
+
 <style is:global>
   :root {
-    --retro-blue: #2563eb;
-    --retro-yellow: #fde047;
+    --green: #22c55e;
+    --green-dim: #16a34a;
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --surface-2: #1a1a1a;
+    --border: #262626;
+    --text: #f5f5f5;
+    --text-muted: #737373;
+    --text-dim: #404040;
+  }
+
+  html,
+  body {
+    background-color: var(--bg);
+    color: var(--text);
   }
 
   body {
     font-family: "Space Grotesk", sans-serif;
   }
 
-  html,
-  body,
-  *,
-  a,
-  button {
-    cursor: none !important;
-  }
-
-  input[type="text"],
-  input[type="email"],
-  textarea {
-    cursor: text !important;
-  }
-
   h1,
   h2,
   h3,
   h4,
-  .font-retro {
+  .font-display {
     font-family: "Archivo Black", sans-serif;
-    letter-spacing: -0.05em;
+    letter-spacing: -0.03em;
+  }
+
+  ::selection {
+    background: var(--green);
+    color: #000;
   }
 
   ::-webkit-scrollbar {
-    width: 12px;
+    width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #000;
+    background: var(--bg);
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--retro-blue);
-    border: 2px solid #000;
+    background: var(--green-dim);
+    border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--retro-yellow);
-  }
-
-  .cursor-click {
-    transform: scale(0.8) translate(2px, 2px) !important;
+    background: var(--green);
   }
 </style>
-
-<script>
-  import { gsap } from "gsap";
-
-  const cursor = document.getElementById("retro-cursor") as HTMLDivElement;
-
-  // Seguimiento del mouse con suavizado (lerp)
-  window.addEventListener("mousemove", (e) => {
-    gsap.to(cursor, {
-      x: e.clientX,
-      y: e.clientY,
-      opacity: 1,
-      duration: 0.1,
-      ease: "power2.out",
-    });
-  });
-
-  // Efecto Click
-  window.addEventListener("mousedown", () => {
-    cursor.children[0].classList.add("cursor-click");
-  });
-  window.addEventListener("mouseup", () => {
-    cursor.children[0].classList.remove("cursor-click");
-  });
-</script>

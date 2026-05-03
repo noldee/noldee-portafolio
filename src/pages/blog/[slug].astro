@@ -14,169 +14,276 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<Layout title={post.data.title}>
-  <main
-    class="py-24 bg-zinc-50 dark:bg-zinc-950 min-h-screen relative overflow-hidden"
-  >
-    <div
-      class="absolute inset-0 opacity-[0.05] pointer-events-none bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:20px_20px]"
-    >
-    </div>
-
-    <div class="max-w-4xl mx-auto px-6 relative z-10">
+<Layout title={`${post.data.title} | Walter Soca`}>
+  <main class="min-h-screen py-24">
+    <div class="max-w-3xl mx-auto px-6">
+      <!-- Breadcrumb -->
       <nav class="mb-16">
         <a
           href="/blog"
-          class="group inline-flex items-center gap-3 bg-white dark:bg-zinc-900 border-4 border-black dark:border-white px-5 py-2 font-black uppercase tracking-tighter shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(37,99,235,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all"
+          class="inline-flex items-center gap-2 text-xs font-mono text-[var(--text-muted)] hover:text-[var(--green)] transition-colors group"
         >
           <svg
-            class="size-5 transition-transform group-hover:-translate-x-1"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="group-hover:-translate-x-1 transition-transform"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="3"
-              d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            <path d="M19 12H5M12 5l-7 7 7 7"></path>
           </svg>
-          REGRESAR_AL_SISTEMA
+          blog
         </a>
+        <span class="text-[var(--text-dim)] font-mono text-xs mx-2">/</span>
+        <span class="text-xs font-mono text-[var(--text-muted)] truncate"
+          >{post.data.title}</span
+        >
       </nav>
 
-      <article
-        class="relative bg-white dark:bg-zinc-900 border-4 border-black dark:border-white shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] dark:shadow-[16px_16px_0px_0px_rgba(37,99,235,1)] overflow-hidden"
-      >
+      <!-- Header del post -->
+      <header class="mb-12 pb-12 border-b border-[var(--border)]">
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-2 mb-6">
+          {
+            post.data.tags.map((tag: string) => (
+              <span class="text-[10px] font-mono text-[var(--green)] border border-[var(--green)] px-2 py-0.5">
+                #{tag}
+              </span>
+            ))
+          }
+        </div>
+
+        <!-- Título -->
+        <h1
+          class="text-4xl md:text-6xl font-display text-[var(--text)] leading-none tracking-tight mb-8"
+        >
+          {post.data.title}
+        </h1>
+
+        <!-- Meta -->
         <div
-          class="bg-black dark:bg-white p-3 flex justify-between items-center border-b-4 border-black dark:border-white"
+          class="flex items-center gap-6 text-xs font-mono text-[var(--text-muted)]"
         >
-          <div class="flex gap-2">
-            <div class="size-3 bg-red-500 border-2 border-black"></div>
-            <div class="size-3 bg-yellow-400 border-2 border-black"></div>
-            <div class="size-3 bg-green-500 border-2 border-black"></div>
+          <div class="flex items-center gap-2">
+            <span
+              class="w-1.5 h-1.5 rounded-full bg-[var(--green)] animate-pulse"
+            ></span>
+            <time
+              >{
+                post.data.pubDate.toLocaleDateString("es-ES", {
+                  dateStyle: "full",
+                })
+              }</time
+            >
           </div>
-          <span
-            class="text-[10px] font-black text-white dark:text-black uppercase tracking-[0.4em]"
-            >READING_MODE: ON</span
-          >
+          <span>Walter Soca</span>
         </div>
+      </header>
 
-        <header
-          class="p-8 md:p-12 border-b-4 border-black dark:border-white bg-blue-50/30 dark:bg-blue-900/10"
-        >
-          <div class="flex flex-wrap gap-2 mb-6">
-            {
-              post.data.tags.map((tag) => (
-                <span class="bg-yellow-300 text-black border-2 border-black px-3 py-1 text-[10px] font-black uppercase tracking-widest">
-                  #{tag}
-                </span>
-              ))
-            }
-          </div>
+      <!-- Imagen destacada -->
+      <div
+        class="aspect-video overflow-hidden mb-12 border border-[var(--border)] bg-[var(--surface-2)]"
+      >
+        <img
+          src={post.data.image}
+          alt={post.data.title}
+          class="w-full h-full object-cover opacity-80"
+        />
+      </div>
 
-          <h1
-            class="text-4xl md:text-6xl font-black text-black dark:text-white uppercase italic tracking-tighter leading-none mb-8"
-          >
-            {post.data.title}
-          </h1>
-
-          <div
-            class="flex items-center gap-6 font-mono text-[11px] font-bold uppercase text-zinc-500 dark:text-zinc-400"
-          >
-            <div class="flex items-center gap-2">
-              <span class="size-2 bg-blue-600 animate-pulse"></span>
-              <time
-                >{
-                  post.data.pubDate.toLocaleDateString("es-ES", {
-                    dateStyle: "full",
-                  })
-                }</time
-              >
-            </div>
-            <span>BY_WALTER_SOCA</span>
-          </div>
-        </header>
-
-        <div class="p-8 md:p-12">
-          <img
-            src={post.data.image}
-            alt={post.data.title}
-            class="w-full aspect-video object-cover border-4 border-black dark:border-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] mb-12 grayscale group-hover:grayscale-0 transition-all"
-          />
-
-          <div class="prose-retro prose dark:prose-invert max-w-none">
-            <Content />
-          </div>
-        </div>
+      <!-- Contenido -->
+      <article class="prose-blog">
+        <Content />
       </article>
+
+      <!-- Footer del post -->
+      <footer
+        class="mt-20 pt-10 border-t border-[var(--border)] flex items-center justify-between flex-wrap gap-4"
+      >
+        <a
+          href="/blog"
+          class="inline-flex items-center gap-2 text-sm font-mono text-[var(--text-muted)] hover:text-[var(--green)] transition-colors group"
+        >
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="group-hover:-translate-x-1 transition-transform"
+          >
+            <path d="M19 12H5M12 5l-7 7 7 7"></path>
+          </svg>
+          todos los posts
+        </a>
+        <span class="text-xs font-mono text-[var(--text-dim)]"
+          >// fin del artículo</span
+        >
+      </footer>
     </div>
   </main>
 </Layout>
 
 <style is:global>
-  /* Tipografía Brutalista para el contenido del blog */
-  .prose-retro {
+  .prose-blog {
     font-family: "Space Grotesk", sans-serif;
-    font-size: 1.125rem;
-    line-height: 1.6;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--text-muted);
   }
 
-  .prose-retro h2,
-  .prose-retro h3 {
+  .prose-blog p {
+    margin-bottom: 1.5rem;
+    color: var(--text-muted);
+  }
+
+  /* Headings */
+  .prose-blog h2,
+  .prose-blog h3,
+  .prose-blog h4 {
     font-family: "Archivo Black", sans-serif;
-    text-transform: uppercase;
-    letter-spacing: -0.05em;
-    color: #000;
+    color: var(--text);
+    letter-spacing: -0.03em;
     margin-top: 2.5rem;
+    margin-bottom: 1rem;
   }
 
-  .dark .prose-retro h2,
-  .dark .prose-retro h3 {
-    color: #fff;
-  }
-
-  .prose-retro h2 {
-    font-size: 2rem;
-    border-left: 8px solid #2563eb;
+  .prose-blog h2 {
+    font-size: 1.75rem;
+    border-left: 2px solid var(--green);
     padding-left: 1rem;
   }
 
-  /* Code Blocks Estilo Terminal */
-  .prose-retro pre {
-    background-color: #000 !important;
-    border: 4px solid #333;
-    border-radius: 0 !important;
+  .prose-blog h3 {
+    font-size: 1.25rem;
+    color: var(--text);
+  }
+
+  /* Links */
+  .prose-blog a {
+    color: var(--green);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .prose-blog a:hover {
+    opacity: 0.8;
+  }
+
+  /* Code inline */
+  .prose-blog :not(pre) > code {
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 0.875em;
+    background-color: var(--surface-2);
+    color: var(--green);
+    border: 1px solid var(--border);
+    padding: 0.15rem 0.4rem;
+    border-radius: 2px;
+  }
+
+  /* Code blocks */
+  .prose-blog pre {
+    background-color: var(--surface) !important;
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--green);
     padding: 1.5rem !important;
-    box-shadow: 8px 8px 0px 0px #2563eb;
+    overflow-x: auto;
+    margin: 2rem 0;
+    border-radius: 0;
+  }
+
+  .prose-blog pre code {
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 0.875rem;
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--text);
+  }
+
+  /* Blockquote */
+  .prose-blog blockquote {
+    border-left: 2px solid var(--green);
+    padding-left: 1.25rem;
+    margin: 2rem 0;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* Listas */
+  .prose-blog ul,
+  .prose-blog ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-muted);
+  }
+
+  .prose-blog ul li {
+    list-style-type: none;
+    position: relative;
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .prose-blog ul li::before {
+    content: "—";
+    position: absolute;
+    left: -0.75rem;
+    color: var(--green);
+    font-size: 0.75rem;
+  }
+
+  .prose-blog ol li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Separador horizontal */
+  .prose-blog hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2.5rem 0;
+  }
+
+  /* Imágenes dentro del contenido */
+  .prose-blog img {
+    width: 100%;
+    border: 1px solid var(--border);
     margin: 2rem 0;
   }
 
-  .prose-retro code {
-    font-family: "JetBrains Mono", "Fira Code", monospace;
-    font-weight: 700 !important;
+  /* Tabla */
+  .prose-blog table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 0.9rem;
   }
 
-  .prose-retro :not(pre) > code {
-    background-color: #fde047 !important;
-    color: #000 !important;
-    padding: 0.2rem 0.5rem !important;
-    border: 2px solid #000;
-    font-size: 0.9em;
+  .prose-blog th {
+    text-align: left;
+    font-family: "Archivo Black", sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    border-bottom: 1px solid var(--green);
+    padding: 0.75rem 1rem;
   }
 
-  .prose-retro blockquote {
-    border-left: 0;
-    background-color: #f3f4f6;
-    border: 4px solid #000;
-    padding: 1.5rem;
-    font-style: italic;
-    box-shadow: 6px 6px 0px 0px #000;
+  .prose-blog td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-muted);
   }
 
-  .dark .prose-retro blockquote {
-    background-color: #111;
-    border-color: #fff;
-    box-shadow: 6px 6px 0px 0px #fff;
+  .prose-blog tr:last-child td {
+    border-bottom: none;
   }
 </style>

@@ -2,7 +2,7 @@
 title: "React desde cero: mi camino semana a semana"
 description: "No tutoriales de 10 horas. No copiar y pegar sin entender. Este es mi roadmap real para aprender React con intención, semana a semana."
 pubDate: "2026-04-08"
-image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png"
+image: "https://opensource.fb.com/img/projects/react.jpg"
 tags: ["React", "Frontend", "JavaScript", "Roadmap"]
 draft: false
 ---

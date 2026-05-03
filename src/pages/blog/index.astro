@@ -1,88 +1,100 @@
 ---
 import Layout from "@/layout/Layout.astro";
 import { getCollection } from "astro:content";
+
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
 
 <Layout title="Blog | Walter Soca">
-  <section class="py-24 bg-zinc-50 dark:bg-zinc-950 min-h-screen relative overflow-hidden">
-    
-    <div class="absolute inset-0 opacity-[0.05] dark:opacity-[0.1] pointer-events-none" 
-         style="background-image: radial-gradient(#000 1px, transparent 1px); background-size: 32px 32px;">
-    </div>
+  <section class="min-h-screen py-24">
+    <div class="max-w-5xl mx-auto px-6">
 
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-      <header class="mb-24">
-        <div class="flex items-center gap-4 mb-8">
-           <a href="/" class="group flex items-center justify-center size-12 bg-white dark:bg-zinc-900 border-4 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all">
-            <svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-           </a>
-           <span class="font-black uppercase tracking-widest text-xs bg-yellow-300 text-black px-3 py-1 border-2 border-black">SYSTEM_ROOT / BLOG</span>
-        </div>
+      <!-- Header -->
+      <header class="mb-20">
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 text-xs font-mono text-[var(--text-muted)] hover:text-[var(--green)] transition-colors mb-10 group"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:-translate-x-1 transition-transform">
+            <path d="M19 12H5M12 5l-7 7 7 7"/>
+          </svg>
+          volver al inicio
+        </a>
 
-        <h1 id="blog-title" class="text-7xl md:text-9xl font-black text-black dark:text-white uppercase italic tracking-tighter leading-none mb-8">
-          Dev<span class="text-blue-600">Log</span>
-        </h1>
-        
-        <div class="flex flex-wrap items-center gap-6">
-          <p class="text-xl font-bold text-zinc-600 dark:text-zinc-400 max-w-xl leading-tight uppercase">
-            Notas sobre <span class="text-black dark:text-white underline decoration-blue-600 decoration-4">React TS</span>, automatización y el caos del software.
-          </p>
-          <div class="bg-black dark:bg-blue-600 text-white px-4 py-2 font-mono text-sm animate-pulse border-2 border-black">
-            STABLE_RELEASE: v1.22
+        <div class="flex items-end justify-between gap-6 flex-wrap">
+          <div>
+            <span class="text-xs font-mono text-[var(--green)] tracking-widest uppercase mb-4 block"></span>
+            <h1 class="text-6xl md:text-8xl font-display text-[var(--text)] leading-none tracking-tight">
+              DevLog
+            </h1>
           </div>
+          <p class="text-[var(--text-muted)] text-sm max-w-xs leading-relaxed pb-2">
+            Notas sobre React, TypeScript, automatización y el caos del software moderno.
+          </p>
         </div>
+
+        <div class="h-px bg-[var(--border)] mt-10"></div>
       </header>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12" id="blog-grid">
+      <!-- Grid de posts -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[var(--border)]" id="blog-grid">
         {
           posts.map((post, index) => (
-            <a href={`/blog/${post.slug}`} class="blog-card opacity-0 group">
-              <article class="relative bg-white dark:bg-zinc-900 border-4 border-black dark:border-white shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] dark:shadow-[12px_12px_0px_0px_rgba(37,99,235,1)] transition-all group-hover:shadow-none group-hover:translate-x-2 group-hover:translate-y-2 h-full flex flex-col">
-                
-                <div class="bg-black dark:bg-white p-2 flex justify-between items-center border-b-4 border-black dark:border-white">
-                  <div class="flex gap-1.5">
-                    <div class="size-2.5 bg-red-500 border border-black"></div>
-                    <div class="size-2.5 bg-green-500 border border-black"></div>
-                  </div>
-                  <span class="text-[8px] font-black text-white dark:text-black uppercase tracking-widest">POST_ID: 00{index + 1}</span>
-                </div>
+            <a
+              href={`/blog/${post.slug}`}
+              class="blog-card group bg-[var(--bg)] hover:bg-[var(--surface)] transition-colors p-6 flex flex-col"
+            >
+              <!-- Imagen -->
+              <div class="aspect-video overflow-hidden mb-5 bg-[var(--surface-2)]">
+                <img
+                  src={post.data.image}
+                  alt={post.data.title}
+                  class="w-full h-full object-cover opacity-50 group-hover:opacity-80 grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100"
+                />
+              </div>
 
-                <div class="aspect-video overflow-hidden border-b-4 border-black dark:border-white bg-zinc-200">
-                  <img 
-                    src={post.data.image} 
-                    alt={post.data.title}
-                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100"
-                  />
-                </div>
+              <!-- Tags -->
+              <div class="flex flex-wrap gap-2 mb-3">
+                {post.data.tags.map((tag: string) => (
+                  <span class="text-[10px] font-mono text-[var(--text-muted)] border border-[var(--border)] px-2 py-0.5">
+                    #{tag}
+                  </span>
+                ))}
+              </div>
 
-                <div class="p-6 flex flex-col flex-1">
-                  <div class="flex flex-wrap gap-2 mb-4">
-                    {post.data.tags.map(tag => (
-                      <span class="text-[10px] font-black uppercase bg-zinc-100 dark:bg-zinc-800 border-2 border-black dark:border-white px-2 py-0.5">{tag}</span>
-                    ))}
-                  </div>
+              <!-- Título -->
+              <h2 class="text-xl font-display text-[var(--text)] leading-tight mb-3 group-hover:text-[var(--green)] transition-colors flex-1">
+                {post.data.title}
+              </h2>
 
-                  <h2 class="text-2xl font-black text-black dark:text-white uppercase leading-none mb-4 group-hover:text-blue-600 transition-colors">
-                    {post.data.title}
-                  </h2>
+              <!-- Descripción -->
+              <p class="text-sm text-[var(--text-muted)] line-clamp-2 mb-6 leading-relaxed">
+                {post.data.description}
+              </p>
 
-                  <p class="text-sm font-bold text-zinc-500 dark:text-zinc-400 line-clamp-3 mb-8 flex-1 italic">
-                    {post.data.description}
-                  </p>
-
-                  <div class="flex items-center justify-between mt-auto pt-4 border-t-2 border-dashed border-zinc-300 dark:border-zinc-700 font-mono text-[10px] font-bold uppercase">
-                    <span>{post.data.pubDate.toLocaleDateString('es-ES')}</span>
-                    <span class="text-blue-600 dark:text-blue-400 group-hover:underline cursor-pointer">READ_MORE >></span>
-                  </div>
-                </div>
-              </article>
+              <!-- Footer -->
+              <div class="flex items-center justify-between pt-4 border-t border-[var(--border)]">
+                <time class="text-xs font-mono text-[var(--text-muted)]">
+                  {post.data.pubDate.toLocaleDateString("es-ES")}
+                </time>
+                <span class="text-xs font-mono text-[var(--green)] group-hover:underline">
+                  leer →
+                </span>
+              </div>
             </a>
           ))
         }
       </div>
+
+      <!-- Empty state -->
+      {posts.length === 0 && (
+        <div class="text-center py-24 border border-[var(--border)]">
+          <p class="text-[var(--text-muted)] font-mono text-sm">// sin posts aún</p>
+        </div>
+      )}
+
     </div>
   </section>
 </Layout>
@@ -90,49 +102,19 @@ const posts = (await getCollection("blog")).sort(
 <script>
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
-
   gsap.registerPlugin(ScrollTrigger);
 
   window.addEventListener("DOMContentLoaded", () => {
-    // Animación del título principal
-    gsap.from("#blog-title", {
-      x: -100,
+    gsap.from(".blog-card", {
+      y: 20,
       opacity: 0,
-      duration: 1,
-      ease: "power4.out"
-    });
-
-    // Grid animation: Staggered "pop" effect
-    gsap.to(".blog-card", {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      duration: 0.8,
-      stagger: 0.1,
-      ease: "back.out(1.2)",
+      duration: 0.5,
+      stagger: 0.08,
+      ease: "power2.out",
       scrollTrigger: {
         trigger: "#blog-grid",
-        start: "top 80%",
+        start: "top 85%",
       },
     });
   });
 </script>
-
-<style>
-  .blog-card {
-    transform: scale(0.9) translateY(40px);
-    will-change: transform, opacity;
-  }
-  
-  /* Efecto de ruido sutil solo para el blog */
-  section::after {
-    content: "";
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-background-image: url("/noise.svg");    
-opacity: 0.04;
-    pointer-events: none;
-    z-index: 50;
-  }
-</style>

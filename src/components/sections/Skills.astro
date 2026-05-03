@@ -8,44 +8,27 @@ const techLogos = Object.entries(techIcons).map(([name, src]) => ({
 }));
 ---
 
-<section
-  class="py-24 relative overflow-hidden bg-white dark:bg-zinc-900 border-t-4 border-black dark:border-white transition-colors duration-300"
->
-  <div
-    class="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] [background-size:40px_40px]"
-  >
-  </div>
-
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start mb-20">
-      <div class="relative">
+<section class="py-24 border-t border-[var(--border)]">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start mb-20">
+      <div>
         <span
-          class="inline-block border-2 border-black bg-blue-600 text-white text-xs font-black tracking-[0.2em] uppercase px-4 py-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-6"
+          class="text-xs font-mono text-[var(--green)] tracking-widest uppercase mb-4 block"
         >
-          SISTEMA // TRAYECTORIA
         </span>
-
-        <h3
-          class="text-6xl md:text-7xl font-black text-black dark:text-white tracking-tighter uppercase italic leading-none"
+        <h2
+          class="text-5xl md:text-6xl font-display text-[var(--text)] leading-none mb-0"
         >
-          Sobre <span
-            class="text-blue-600 underline decoration-8 decoration-black dark:decoration-white"
-            >mí</span
-          >
-        </h3>
+          Sobre mí
+        </h2>
       </div>
 
-      <div class="border-l-4 border-black dark:border-white pl-8 py-2">
-        <p
-          class="text-black dark:text-zinc-200 text-xl md:text-2xl leading-tight font-bold mb-6"
-        >
-          Soy <span class="bg-yellow-300 text-black px-2">Walter</span>,
-          desarrollador de software con pasión por crear soluciones web
-          modernas.
+      <div class="border-l border-[var(--border)] pl-8">
+        <p class="text-[var(--text)] text-lg leading-relaxed mb-4">
+          Soy <span class="text-[var(--green)]">Walter</span>, desarrollador de
+          software con pasión por crear soluciones web modernas.
         </p>
-        <p
-          class="text-zinc-600 dark:text-zinc-400 text-lg leading-relaxed font-medium"
-        >
+        <p class="text-[var(--text-muted)] text-base leading-relaxed">
           Me especializo en transformar ideas complejas en interfaces potentes.
           Focalizado en la escalabilidad, siempre buscando la excelencia técnica
           en cada línea de código.
@@ -53,58 +36,33 @@ const techLogos = Object.entries(techIcons).map(([name, src]) => ({
       </div>
     </div>
 
+    <!-- Stack -->
     <div
-      class="border-4 border-black dark:border-white bg-white dark:bg-zinc-800 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] dark:shadow-[12px_12px_0px_0px_rgba(255,255,255,1)] overflow-hidden"
+      class="border border-[var(--border)] bg-[var(--surface)] rounded-sm overflow-hidden"
     >
       <div
-        class="bg-black dark:bg-white px-6 py-2 flex justify-between items-center"
+        class="px-6 py-3 border-b border-[var(--border)] flex justify-between items-center"
       >
-        <h3
-          class="text-xs font-black text-white dark:text-black uppercase tracking-[0.3em]"
+        <span
+          class="text-xs font-mono text-[var(--text-muted)] uppercase tracking-widest"
+          >stack</span
         >
-          Hardware_Stack.exe
-        </h3>
-        <div class="flex gap-2">
-          <div class="size-3 border-2 border-white dark:border-black"></div>
-          <div
-            class="size-3 border-2 border-white dark:border-black bg-white dark:bg-black"
-          >
-          </div>
-        </div>
+        <span class="text-xs font-mono text-[var(--green)]">● activo</span>
       </div>
 
-      <div class="p-8 md:p-12 border-t-4 border-black dark:border-white">
-        <div class="relative w-full">
-          <div
-            class="flex items-center grayscale hover:grayscale-0 transition-all duration-500"
-          >
-            <LogoLoop
-              logos={techLogos}
-              speed={40}
-              direction="left"
-              logoHeight={45}
-              gap={100}
-              hoverSpeed={5}
-              scaleOnHover
-              ariaLabel="Tecnologías que utilizo"
-              client:visible
-            />
-          </div>
-        </div>
-
-        <div
-          class="mt-10 pt-6 border-t-2 border-dashed border-black dark:border-zinc-600 flex flex-col md:flex-row justify-between items-center gap-4"
-        >
-          <p
-            class="text-xs text-black dark:text-zinc-400 font-black uppercase italic"
-          >
-            * OPTIMIZANDO FLUJO DE TRABAJO CONSTANTEMENTE
-          </p>
-          <span
-            class="bg-black text-white dark:bg-white dark:text-black text-[10px] px-2 py-0.5 font-bold animate-pulse"
-          >
-            STATUS: ACTIVE
-          </span>
+      <div class="p-8">
+        <div class="flex items-center">
+          <LogoLoop
+            logos={techLogos}
+            speed={40}
+            direction="left"
+            logoHeight={40}
+            gap={80}
+            hoverSpeed={5}
+            scaleOnHover
+            ariaLabel="Tecnologías que utilizo"
+            client:visible
+          />
         </div>
       </div>
     </div>
@@ -112,18 +70,14 @@ const techLogos = Object.entries(techIcons).map(([name, src]) => ({
 </section>
 
 <style is:global>
-  /* Limpieza de filtros para que los logos se vean nítidos en modo retro */
   .logo-item {
-    filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.5)) !important;
-    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    filter: brightness(0) invert(0.6);
+    transition:
+      filter 0.3s ease,
+      transform 0.2s ease;
   }
-
-  .dark .logo-item {
-    filter: brightness(0) invert(1)
-      drop-shadow(2px 2px 0px rgba(255, 255, 255, 0.5)) !important;
-  }
-
   .logo-item:hover {
-    transform: scale(1.2) rotate(-3deg) !important;
+    filter: brightness(0) invert(1);
+    transform: scale(1.1);
   }
 </style>

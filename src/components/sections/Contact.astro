@@ -1,167 +1,122 @@
 ---
-import { Heart } from "lucide-react";
-
-
 const redesSociales = [
   { nombre: "GitHub", url: "https://github.com/noldee" },
-  { nombre: "LinkedIn", url: "https://www.linkedin.com/in/walter-soca-mezares-5b158b3b0/" },
-  { nombre: "Instagram", url: "https://instagram.com/noldesito" }
+  {
+    nombre: "LinkedIn",
+    url: "https://www.linkedin.com/in/walter-soca-mezares-5b158b3b0/",
+  },
+  { nombre: "Instagram", url: "https://instagram.com/noldesito" },
 ];
 ---
 
-<section
-  id="contacto"
-  class="py-32 bg-yellow-50 dark:bg-zinc-900 border-t-8 border-black dark:border-white transition-colors duration-300 relative overflow-hidden"
->
-  <div
-    class="absolute inset-0 opacity-[0.15] dark:opacity-[0.05] pointer-events-none bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:20px_20px]"
-  >
-  </div>
-
-  <div class="max-w-4xl mx-auto px-6 relative z-10">
-    <div class="mb-16 text-center lg:text-left">
+<section id="contacto" class="py-24 border-t border-[var(--border)]">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="mb-16">
+      <span
+        class="text-xs font-mono text-[var(--green)] tracking-widest uppercase mb-4 block"
+      ></span>
       <h2
-        id="contact-title"
-        class="text-5xl sm:text-6xl md:text-8xl font-black text-black dark:text-white uppercase italic tracking-tighter leading-none"
+        class="text-5xl md:text-6xl font-display text-[var(--text)] leading-none mb-4"
       >
-        ¿Hablamos<span class="text-blue-600">?</span>
+        Contacto
       </h2>
-      <p
-        class="mt-4 text-xl font-bold text-zinc-600 dark:text-zinc-400 uppercase tracking-widest"
-      >
-        ESTADO: <span class="text-green-600 animate-pulse"
-          >DISPONIBLE PARA PROYECTOS</span
+      <p class="text-sm font-mono text-[var(--text-muted)]">
+        estado: <span class="text-[var(--green)]"
+          >disponible para proyectos</span
         >
       </p>
     </div>
 
+    <!-- Formulario -->
     <div
-      id="contact-window"
-      class="opacity-0 border-4 border-black dark:border-white bg-white dark:bg-zinc-800 shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] dark:shadow-[16px_16px_0px_0px_rgba(37,99,235,1)] overflow-hidden"
+      class="border border-[var(--border)] bg-[var(--surface)] p-8 md:p-12 mb-16 max-w-2xl"
     >
-      <div
-        class="bg-black dark:bg-white p-3 flex justify-between items-center border-b-4 border-black dark:border-white"
-      >
-        <div class="flex gap-2">
-          <div class="size-4 bg-red-500 border-2 border-black"></div>
-          <div class="size-4 bg-yellow-400 border-2 border-black"></div>
-          <div class="size-4 bg-green-500 border-2 border-black"></div>
-        </div>
-        <span
-          class="text-[10px] font-black text-white dark:text-black uppercase tracking-[0.4em]"
-        >
-          NOLDEE_MAILER.SYS
-        </span>
-      </div>
-
-      <div class="p-8 md:p-12">
-        <form class="space-y-8">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="field-container opacity-0">
-              <label
-                class="block text-xs font-black uppercase mb-2 dark:text-white tracking-widest"
-                >>> TU_NOMBRE</label
-              >
-              <input
-                type="text"
-                placeholder="Escribe aquí..."
-                class="w-full bg-zinc-100 dark:bg-zinc-700 border-4 border-black dark:border-white p-4 font-bold text-black dark:text-white focus:bg-yellow-200 dark:focus:bg-blue-900 outline-none transition-colors"
-              />
-            </div>
-            <div class="field-container opacity-0">
-              <label
-                class="block text-xs font-black uppercase mb-2 dark:text-white tracking-widest"
-                >>> TU_EMAIL</label
-              >
-              <input
-                type="email"
-                placeholder="ejemplo@correo.com"
-                class="w-full bg-zinc-100 dark:bg-zinc-700 border-4 border-black dark:border-white p-4 font-bold text-black dark:text-white focus:bg-yellow-200 dark:focus:bg-blue-900 outline-none transition-colors"
-              />
-            </div>
-          </div>
-
-          <div class="field-container opacity-0">
+      <form class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="field-container">
             <label
-              class="block text-xs font-black uppercase mb-2 dark:text-white tracking-widest"
-              >>> MENSAJE.LOG</label
+              class="block text-xs font-mono text-[var(--text-muted)] uppercase tracking-widest mb-2"
             >
-            <textarea
-              rows="4"
-              placeholder="¿En qué puedo ayudarte?"
-              class="w-full bg-zinc-100 dark:bg-zinc-700 border-4 border-black dark:border-white p-4 font-bold text-black dark:text-white focus:bg-yellow-200 dark:focus:bg-blue-900 outline-none transition-colors"
-            ></textarea>
+              nombre
+            </label>
+            <input
+              type="text"
+              placeholder="Tu nombre"
+              class="w-full bg-[var(--bg)] border border-[var(--border)] px-4 py-3 text-sm text-[var(--text)] font-mono placeholder:text-[var(--text-dim)] focus:border-[var(--green)] focus:outline-none transition-colors"
+            />
           </div>
-
-          <div class="field-container opacity-0 pt-4 text-center">
-            <button
-              type="submit"
-              class="group relative inline-flex items-center justify-center px-8 py-4 font-black text-xl uppercase tracking-tighter bg-blue-600 text-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 active:bg-yellow-400 active:text-black transition-all w-full md:w-auto"
+          <div class="field-container">
+            <label
+              class="block text-xs font-mono text-[var(--text-muted)] uppercase tracking-widest mb-2"
             >
-              ENVIAR_MENSAJE
-              <svg
-                class="ml-3 size-6 transition-transform group-hover:translate-x-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="3"
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-              </svg>
-            </button>
+              email
+            </label>
+            <input
+              type="email"
+              placeholder="tu@correo.com"
+              class="w-full bg-[var(--bg)] border border-[var(--border)] px-4 py-3 text-sm text-[var(--text)] font-mono placeholder:text-[var(--text-dim)] focus:border-[var(--green)] focus:outline-none transition-colors"
+            />
           </div>
-        </form>
-
-        <div
-          class="mt-12 pt-8 border-t-4 border-dashed border-zinc-200 dark:border-zinc-700"
-        >
-          <p
-            class="text-xs font-black text-zinc-400 dark:text-zinc-500 uppercase mb-4 tracking-[0.2em]"
-          >
-            O vía correo directo:
-          </p>
-          <a
-            href="mailto:socamezareswalter@gmail.com"
-            class="text-[1rem] md:text-3xl font-black text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 break-all transition-colors decoration-4 underline decoration-yellow-300 dark:decoration-blue-600 underline-offset-8"
-          >
-            socamezareswalter@gmail.com
-          </a>
         </div>
-      </div>
+
+        <div class="field-container">
+          <label
+            class="block text-xs font-mono text-[var(--text-muted)] uppercase tracking-widest mb-2"
+          >
+            mensaje
+          </label>
+          <textarea
+            rows="4"
+            placeholder="¿En qué puedo ayudarte?"
+            class="w-full bg-[var(--bg)] border border-[var(--border)] px-4 py-3 text-sm text-[var(--text)] font-mono placeholder:text-[var(--text-dim)] focus:border-[var(--green)] focus:outline-none transition-colors resize-none"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="bg-[var(--green)] text-black px-6 py-2.5 text-sm font-semibold hover:bg-[var(--green-dim)] hover:text-white transition-all"
+        >
+          Enviar mensaje →
+        </button>
+      </form>
     </div>
 
+    <!-- Email directo -->
+    <div class="mb-20">
+      <p
+        class="text-xs font-mono text-[var(--text-muted)] uppercase tracking-widest mb-3"
+      >
+        o directo al correo
+      </p>
+      <a
+        href="mailto:socamezareswalter@gmail.com"
+        class="text-xl md:text-2xl font-display text-[var(--text)] hover:text-[var(--green)] transition-colors"
+      >
+        socamezareswalter@gmail.com
+      </a>
+    </div>
+
+    <!-- Footer -->
     <footer
-      class="mt-32 pt-12 border-t-8 border-black dark:border-white flex flex-col md:flex-row justify-between items-end gap-8 pb-12"
+      class="border-t border-[var(--border)] pt-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-6"
     >
-      <div class="space-y-2">
-        <p
-          class="text-4xl font-black tracking-tighter text-black dark:text-white uppercase italic"
-        >
-          Walter Soca
-        </p>
-        <div class="flex gap-4">
-          <span
-            class="bg-black text-white dark:bg-white dark:text-black text-[10px] px-2 py-1 font-bold uppercase"
-            >LIMA_PERU</span
-          >
-          <span
-            class="bg-blue-600 text-white text-[10px] px-2 py-1 font-bold uppercase"
-            >© 2026</span
-          >
+      <div>
+        <p class="text-2xl font-display text-[var(--text)] mb-2">Walter Soca</p>
+        <div class="flex gap-3 text-xs font-mono text-[var(--text-muted)]">
+          <span>Lima, Perú</span>
+          <span>·</span>
+          <span>© 2026</span>
         </div>
       </div>
 
-      <nav class="flex flex-wrap gap-6">
+      <nav class="flex gap-6">
         {
           redesSociales.map((social) => (
             <a
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              class="text-sm font-black uppercase tracking-widest text-black dark:text-white hover:bg-yellow-300 dark:hover:bg-blue-600 hover:text-black p-2 border-2 border-transparent hover:border-black transition-all"
+              class="text-sm font-mono text-[var(--text-muted)] hover:text-[var(--green)] transition-colors"
             >
               {social.nombre}
             </a>
@@ -169,96 +124,5 @@ const redesSociales = [
         }
       </nav>
     </footer>
-    <div class="mt-8 flex justify-center lg:justify-start">
-      <a
-        href="https://www.retroui.dev/"
-        target="_blank"
-        class="group relative inline-flex items-center gap-2 bg-yellow-300 px-4 py-2 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all -rotate-2 hover:rotate-0"
-      >
-        <span
-          class="text-[10px] font-black uppercase tracking-tighter text-black"
-        >
-          Inspirado en: <span class="underline decoration-black/30"
-            >RetroUI</span
-          >
-        </span>
-        <div class="text-red-500 group-hover:scale-125 transition-transform">
-          <Heart />
-        </div>
-      </a>
-    </div>
   </div>
 </section>
-
-<script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  window.addEventListener("DOMContentLoaded", () => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#contacto",
-        start: "top 70%",
-      },
-    });
-
-    // 1. Animación del Título (Efecto de caída)
-    tl.from("#contact-title", {
-      y: -50,
-      opacity: 0,
-      rotateX: -90,
-      duration: 0.8,
-      ease: "back.out(1.7)",
-    });
-
-    // 2. La ventana aparece con un efecto de "pop" elástico
-    tl.to(
-      "#contact-window",
-      {
-        opacity: 1,
-        scale: 1,
-        duration: 0.6,
-        ease: "elastic.out(1, 0.5)",
-      },
-      "-=0.4",
-    );
-
-    // 3. Los campos del formulario entran en cascada
-    tl.to(
-      ".field-container",
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.15,
-        duration: 0.5,
-        ease: "power2.out",
-      },
-      "-=0.2",
-    );
-  });
-</script>
-
-<style>
-  /* Reset de estado para animación */
-  #contact-window {
-    transform: scale(0.95);
-    transform-origin: center top;
-  }
-  .field-container {
-    transform: translateY(20px);
-  }
-
-  /* Efecto de foco retro */
-  input:focus,
-  textarea:focus {
-    box-shadow: 4px 4px 0px 0px #2563eb;
-    transform: translate(-2px, -2px);
-  }
-
-  :global(.dark) input:focus,
-  :global(.dark) textarea:focus {
-    box-shadow: 4px 4px 0px 0px #ffffff;
-  }
-</style>
