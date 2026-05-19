@@ -9,106 +9,113 @@ const redesSociales = [
 ];
 ---
 
-<section id="contacto" class="py-24 border-t border-[var(--border)]">
-  <div class="max-w-5xl mx-auto px-6">
-    <div class="mb-16">
-      <span
-        class="text-xs font-mono text-[var(--green)] tracking-widest uppercase mb-4 block"
-      ></span>
-      <h2
-        class="text-5xl md:text-6xl font-display text-[var(--text)] leading-none mb-4"
-      >
-        Contacto
-      </h2>
-      <p class="text-sm font-mono text-[var(--text-muted)]">
-        estado: <span class="text-[var(--green)]"
-          >disponible para proyectos</span
+<section id="contacto" class="py-20 border-t border-[#222225] bg-[#0b0b0c]">
+  <div class="max-w-5xl mx-auto px-4">
+    <!-- Título de Sección Estilo Bun/Deno -->
+    <div class="mb-12">
+      <h2 class="text-xl font-bold text-[#fbebca]">[05] canales_contacto</h2>
+      <p class="text-xs font-mono text-[#8c8c93] mt-1">
+        estado: <span class="text-[#ff847c] animate-pulse"
+          >● disponible para nuevos retos</span
         >
       </p>
     </div>
 
-    <!-- Formulario -->
-    <div
-      class="border border-[var(--border)] bg-[var(--surface)] p-8 md:p-12 mb-16 max-w-2xl"
-    >
-      <form class="space-y-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="field-container">
-            <label
-              class="block text-xs font-mono text-[var(--text-muted)] uppercase tracking-widest mb-2"
-            >
-              nombre
-            </label>
-            <input
-              type="text"
-              placeholder="Tu nombre"
-              class="w-full bg-[var(--bg)] border border-[var(--border)] px-4 py-3 text-sm text-[var(--text)] font-mono placeholder:text-[var(--text-dim)] focus:border-[var(--green)] focus:outline-none transition-colors"
-            />
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-20">
+      <!-- Bloque Izquierdo: Formulario Moderno (7 columnas) -->
+      <div
+        class="lg:col-span-7 border border-[#222225] bg-[#131315] p-6 sm:p-8 rounded-2xl shadow-xl"
+      >
+        <form class="space-y-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="field-container">
+              <label
+                class="block text-[11px] font-mono text-[#8c8c93] lowercase mb-2"
+              >
+                _nombre
+              </label>
+              <input
+                type="text"
+                placeholder="tu nombre"
+                class="w-full bg-[#0b0b0c] border border-[#222225] rounded-xl px-4 py-2.5 text-xs font-mono text-[#fbfaf7] placeholder:text-[#8c8c93]/40 focus:border-[#fbebca] focus:ring-1 focus:ring-[#fbebca] focus:outline-none transition-all"
+              />
+            </div>
+            <div class="field-container">
+              <label
+                class="block text-[11px] font-mono text-[#8c8c93] lowercase mb-2"
+              >
+                _email
+              </label>
+              <input
+                type="email"
+                placeholder="tu@correo.com"
+                class="w-full bg-[#0b0b0c] border border-[#222225] rounded-xl px-4 py-2.5 text-xs font-mono text-[#fbfaf7] placeholder:text-[#8c8c93]/40 focus:border-[#fbebca] focus:ring-1 focus:ring-[#fbebca] focus:outline-none transition-all"
+              />
+            </div>
           </div>
-          <div class="field-container">
-            <label
-              class="block text-xs font-mono text-[var(--text-muted)] uppercase tracking-widest mb-2"
-            >
-              email
-            </label>
-            <input
-              type="email"
-              placeholder="tu@correo.com"
-              class="w-full bg-[var(--bg)] border border-[var(--border)] px-4 py-3 text-sm text-[var(--text)] font-mono placeholder:text-[var(--text-dim)] focus:border-[var(--green)] focus:outline-none transition-colors"
-            />
-          </div>
-        </div>
 
-        <div class="field-container">
-          <label
-            class="block text-xs font-mono text-[var(--text-muted)] uppercase tracking-widest mb-2"
+          <div class="field-container">
+            <label
+              class="block text-[11px] font-mono text-[#8c8c93] lowercase mb-2"
+            >
+              _mensaje
+            </label>
+            <textarea
+              rows="4"
+              placeholder="¿en qué puedo ayudarte?"
+              class="w-full bg-[#0b0b0c] border border-[#222225] rounded-xl px-4 py-2.5 text-xs font-mono text-[#fbfaf7] placeholder:text-[#8c8c93]/40 focus:border-[#fbebca] focus:ring-1 focus:ring-[#fbebca] focus:outline-none transition-all resize-none"
+            ></textarea>
+          </div>
+
+          <!-- Botón estilo píldora Bun Terminal -->
+          <button
+            type="submit"
+            class="w-full sm:w-auto text-xs font-semibold bg-[#fbebca] text-[#0b0b0c] px-5 py-2.5 rounded-xl hover:bg-[#fbfaf7] transition-all border border-[#fbebca]"
           >
-            mensaje
-          </label>
-          <textarea
-            rows="4"
-            placeholder="¿En qué puedo ayudarte?"
-            class="w-full bg-[var(--bg)] border border-[var(--border)] px-4 py-3 text-sm text-[var(--text)] font-mono placeholder:text-[var(--text-dim)] focus:border-[var(--green)] focus:outline-none transition-colors resize-none"
-          ></textarea>
+            sh submit_message.sh
+          </button>
+        </form>
+      </div>
+
+      <!-- Bloque Derecho: Información alternativa (5 columnas) -->
+      <div class="lg:col-span-5 lg:pt-8 space-y-6">
+        <div>
+          <p class="text-[11px] font-mono text-[#8c8c93] lowercase mb-2">
+            _correo_directo
+          </p>
+          <a
+            href="mailto:socamezareswalter@gmail.com"
+            class="text-base sm:text-lg font-mono font-bold text-[#fbfaf7] hover:text-[#fbebca] transition-colors break-all"
+          >
+            socamezareswalter@gmail.com
+          </a>
         </div>
 
-        <button
-          type="submit"
-          class="bg-[var(--green)] text-black px-6 py-2.5 text-sm font-semibold hover:bg-[var(--green-dim)] hover:text-white transition-all"
+        <div
+          class="p-4 bg-[#131315]/40 border border-[#222225] rounded-xl text-xs text-[#8c8c93] leading-relaxed"
         >
-          Enviar mensaje →
-        </button>
-      </form>
+          <p>
+            ¿Prefieres saltarte el formulario? Envíame un correo directamente.
+            Suelo responder en menos de 24 horas laborables.
+          </p>
+        </div>
+      </div>
     </div>
 
-    <!-- Email directo -->
-    <div class="mb-20">
-      <p
-        class="text-xs font-mono text-[var(--text-muted)] uppercase tracking-widest mb-3"
-      >
-        o directo al correo
-      </p>
-      <a
-        href="mailto:socamezareswalter@gmail.com"
-        class="text-xl md:text-2xl font-display text-[var(--text)] hover:text-[var(--green)] transition-colors"
-      >
-        socamezareswalter@gmail.com
-      </a>
-    </div>
-
-    <!-- Footer -->
+    <!-- Footer Unificado -->
     <footer
-      class="border-t border-[var(--border)] pt-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-6"
+      class="border-t border-[#222225] pt-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
     >
       <div>
-        <p class="text-2xl font-display text-[var(--text)] mb-2">Walter Soca</p>
-        <div class="flex gap-3 text-xs font-mono text-[var(--text-muted)]">
+        <p class="text-sm font-bold text-[#fbebca]">wSoca()</p>
+        <div class="flex gap-2 text-[11px] font-mono text-[#8c8c93] mt-1">
           <span>Lima, Perú</span>
           <span>·</span>
           <span>© 2026</span>
         </div>
       </div>
 
+      <!-- Redes en Footer tipo Enlaces Mono -->
       <nav class="flex gap-6">
         {
           redesSociales.map((social) => (
@@ -116,9 +123,9 @@ const redesSociales = [
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              class="text-sm font-mono text-[var(--text-muted)] hover:text-[var(--green)] transition-colors"
+              class="text-xs font-mono text-[#8c8c93] hover:text-[#fbfaf7] transition-colors"
             >
-              {social.nombre}
+              /{social.nombre.toLowerCase()}
             </a>
           ))
         }

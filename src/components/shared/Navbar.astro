@@ -1,171 +1,96 @@
 ---
-import ExternalLink from "../icons/ExternalLink.astro";
-import { ModeToggle } from "../ui/ModeToggle";
-import NavLink from "../ui/NavLink.astro";
+
 ---
 
+<!-- Se cambió 'fixed' por 'absolute' y el fondo ahora es sólido -->
 <header
-  class="fixed top-0 left-0 right-0 z-[100] border-b border-[var(--border)] bg-[var(--bg)]/90 backdrop-blur-sm"
+  class="absolute top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-5xl z-[100] border border-[#222225] bg-[#131315] rounded-2xl shadow-xl"
 >
-  <div
-    class="max-w-5xl mx-auto flex justify-between items-center h-[72px] px-6"
-  >
+  <div class="flex justify-between items-center h-14 px-4 sm:px-6">
+    <!-- Logo tipo Bun (Texto mono en negrita) -->
     <a
       href="/"
-      class="text-[var(--green)] font-display text-lg tracking-tight hover:opacity-80 transition-opacity"
+      class="flex items-center gap-2 text-sm font-bold text-[#fbebca] tracking-tighter"
     >
-      Euronymous
+      <span>wSoca()</span>
     </a>
 
-    <div class="flex items-center gap-8">
-      <nav
-        class="hidden md:flex items-center gap-x-8 text-sm font-medium text-[var(--text-muted)]"
+    <!-- Navegación central (Escritorio) -->
+    <nav
+      class="hidden md:flex items-center gap-x-6 text-xs font-medium text-[#8c8c93]"
+    >
+      <a href="/" class="text-[#fbfaf7] hover:text-[#fbebca] transition-colors"
+        >.inicio()</a
       >
-        <NavLink
-          className="hover:text-[var(--text)] transition-colors"
-          href="/"
-          title="Inicio"
-        />
-        <NavLink
-          className="hover:text-[var(--text)] transition-colors"
-          href="#experiencia"
-          title="Experiencia"
-        />
-        <NavLink
-          className="hover:text-[var(--text)] transition-colors"
-          href="#proyectos"
-          title="Proyectos"
-        />
-        <NavLink
-          className="hover:text-[var(--text)] transition-colors"
-          href="/blog"
-          title="Blog"
-        />
-        <NavLink
-          className="hover:text-[var(--text)] transition-colors"
-          href="#contacto"
-          title="Contacto"
-        />
-      </nav>
+      <a href="#experiencia" class="hover:text-[#fbebca] transition-colors"
+        >.experiencia()</a
+      >
+      <a href="#proyectos" class="hover:text-[#fbebca] transition-colors"
+        >.proyectos()</a
+      >
+      <a href="/blog" class="hover:text-[#fbebca] transition-colors">.blog()</a>
+    </nav>
 
-      <div class="flex items-center gap-4">
-        <a
-          href="CV.pdf"
-          download
-          class="hidden md:flex text-sm font-semibold text-[var(--green)] border border-[var(--green)] px-5 py-2 hover:bg-[var(--green)] hover:text-black transition-all rounded-sm items-center"
-        >
-          Descargar CV
-        </a>
+    <!-- Botón de Acción tipo Píldora Terminal -->
+    <div class="flex items-center gap-3">
+      <a
+        href="CV.pdf"
+        download
+        class="text-xs font-semibold bg-[#fbebca] text-[#0b0b0c] px-4 py-2 rounded-xl hover:bg-[#fbfaf7] transition-all border border-[#fbebca]"
+      >
+        curl CV.pdf
+      </a>
 
-        <button
-          id="menu-toggle"
-          aria-label="Abrir menú"
-          class="md:hidden flex flex-col gap-1.5 p-2 relative"
-        >
-          <span class="h-px w-6 bg-[var(--text)] block" id="bar-1"></span>
-          <span class="h-px w-6 bg-[var(--text)] block" id="bar-2"></span>
-          <span class="h-px w-4 bg-[var(--text)] block" id="bar-3"></span>
-        </button>
-      </div>
+      <!-- Hamburguesa móvil -->
+      <button
+        id="menu-toggle"
+        aria-label="Menu"
+        class="md:hidden flex flex-col gap-1 p-1"
+      >
+        <span class="h-[1.5px] w-5 bg-[#fbfaf7] block"></span>
+        <span class="h-[1.5px] w-5 bg-[#fbfaf7] block"></span>
+      </button>
     </div>
   </div>
 </header>
 
-<!--
-  Mobile menu: FUERA del <header> y con z-[999] para estar encima de todo.
-  Fondo #111111 forzado con style inline para evitar conflictos con Tailwind.
--->
+<!-- Menú Móvil Adaptado (Este sí se queda fixed temporalmente mientras está abierto para cubrir toda la pantalla correctamente) -->
 <div
   id="mobile-menu"
-  class="hidden fixed inset-0 z-[999] flex-col"
-  style="background-color: #111111;"
+  class="hidden fixed inset-0 z-[999] flex-col bg-[#0b0b0c] p-6 pt-24"
 >
-  <!-- Top bar -->
-  <div
-    class="flex items-center justify-between h-[72px] px-6 border-b border-[#262626] flex-shrink-0"
+  <button
+    id="close-menu"
+    class="absolute top-6 right-6 text-[#8c8c93] hover:text-[#fbfaf7] text-xs"
   >
-    <span class="text-[var(--green)] font-display text-lg tracking-tight"
-      >Euronymous</span
-    >
-    <button
-      id="close-menu"
-      aria-label="Cerrar menú"
-      class="text-[#737373] hover:text-white transition-colors p-2"
-    >
-      <svg
-        width="22"
-        height="22"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1.5"
-        stroke-linecap="round"
-      >
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="6" x2="18" y2="18"></line>
-      </svg>
-    </button>
-  </div>
-
-  <!-- Nav links -->
-  <nav class="flex flex-col px-6 mt-6 flex-1">
-    {
-      [
-        { text: "Inicio", href: "/" },
-        { text: "Experiencia", href: "#experiencia" },
-        { text: "Proyectos", href: "#proyectos" },
-        { text: "Blog", href: "/blog" },
-        { text: "Contacto", href: "#contacto" },
-      ].map((item) => (
-        <a
-          href={item.href}
-          class="mobile-link text-4xl font-display text-white hover:text-[var(--green)] transition-colors tracking-tight py-4 border-b border-[#1f1f1f]"
-        >
-          {item.text}
-        </a>
-      ))
-    }
+    [ cerrar ]
+  </button>
+  <nav class="flex flex-col gap-6 text-xl font-medium">
+    <a href="/" class="mobile-link text-[#fbebca] hover:underline">/inicio</a>
+    <a href="#experiencia" class="mobile-link hover:underline">/experiencia</a>
+    <a href="#proyectos" class="mobile-link hover:underline">/proyectos</a>
+    <a href="/blog" class="mobile-link hover:underline">/blog</a>
   </nav>
-
-  <!-- Botón CV al fondo -->
-  <div class="px-6 pb-10 pt-6 flex-shrink-0">
-    <a
-      href="CV.pdf"
-      download
-      class="mobile-link block w-full text-center text-base font-semibold text-[var(--green)] border border-[var(--green)] py-4 hover:bg-[var(--green)] hover:text-black transition-all"
-    >
-      Descargar CV
-    </a>
-  </div>
 </div>
 
-<div class="h-[72px]"></div>
+<!-- Espaciador para que el Hero no se pegue al borde superior -->
+<div class="h-24"></div>
 
 <script>
-  const menuToggle = document.querySelector(
-    "#menu-toggle",
-  ) as HTMLButtonElement;
-  const closeMenu = document.querySelector("#close-menu") as HTMLButtonElement;
-  const mobileMenu = document.querySelector("#mobile-menu") as HTMLDivElement;
+  const menuToggle = document.querySelector("#menu-toggle");
+  const closeMenu = document.querySelector("#close-menu");
+  const mobileMenu = document.querySelector("#mobile-menu");
   const mobileLinks = document.querySelectorAll(".mobile-link");
 
-  let isOpen = false;
+  menuToggle?.addEventListener("click", () =>
+    mobileMenu?.classList.remove("hidden"),
+  );
 
-  function openMenu() {
-    isOpen = true;
-    mobileMenu.classList.remove("hidden");
-    mobileMenu.classList.add("flex");
-    document.body.style.overflow = "hidden";
-  }
+  closeMenu?.addEventListener("click", () =>
+    mobileMenu?.classList.add("hidden"),
+  );
 
-  function closeMenuFn() {
-    isOpen = false;
-    mobileMenu.classList.add("hidden");
-    mobileMenu.classList.remove("flex");
-    document.body.style.overflow = "";
-  }
-
-  menuToggle?.addEventListener("click", openMenu);
-  closeMenu?.addEventListener("click", closeMenuFn);
-  mobileLinks.forEach((link) => link.addEventListener("click", closeMenuFn));
+  mobileLinks.forEach((link) =>
+    link.addEventListener("click", () => mobileMenu?.classList.add("hidden")),
+  );
 </script>

@@ -4,13 +4,11 @@ import "../styles/global.css";
 interface Props {
   title?: string;
   description?: string;
-  image?: string;
 }
 
 const {
   title = "Walter Soca | Portafolio",
-  description = "Desarrollador Full Stack enfocado en crear interfaces modernas y escalables.",
-  image = "/images/og-image.jpeg",
+  description = "Full Stack Developer. Construyendo la web rápida y moderna.",
 } = Astro.props;
 ---
 
@@ -22,71 +20,60 @@ const {
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
-    <meta property="og:image" content={image} />
+
+    <!-- Google Fonts: JetBrains Mono para TODO (Estilo Bun/Deno total) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@300..700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
     <title>{title}</title>
   </head>
 
-  <body class="antialiased text-neutral-100 overflow-x-hidden">
-    <main class="relative z-10 w-full">
-      <slot />
-    </main>
+  <body class="antialiased min-h-screen bg-[#0b0b0c] text-[#fbfaf7]">
+    <slot />
   </body>
 </html>
 
 <style is:global>
   :root {
-    --green: #22c55e;
-    --green-dim: #16a34a;
-    --bg: #0a0a0a;
-    --surface: #111111;
-    --surface-2: #1a1a1a;
-    --border: #262626;
-    --text: #f5f5f5;
-    --text-muted: #737373;
-    --text-dim: #404040;
+    --bg-dark: #0b0b0c; /* El negro orgánico de Bun */
+    --bg-card: #131315; /* Gris carbón para las tarjetas */
+    --border-color: #222225; /* Bordes sutiles pero visibles */
+    --text-main: #fbfaf7; /* Blanco crema (no cansa la vista) */
+    --text-muted: #8c8c93; /* Gris lavado */
+    --brand-color: #fbebca; /* El amarillo crema característico */
+    --brand-accent: #ff847c; /* Toque pastel secundario */
   }
 
   html,
   body {
-    background-color: var(--bg);
-    color: var(--text);
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: "JetBrains Mono", monospace;
+    letter-spacing: -0.01em;
   }
 
-  body {
-    font-family: "Space Grotesk", sans-serif;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  .font-display {
-    font-family: "Archivo Black", sans-serif;
-    letter-spacing: -0.03em;
-  }
-
+  /* Selección de texto estilo retro-futurista */
   ::selection {
-    background: var(--green);
-    color: #000;
+    background: var(--brand-color);
+    color: #000000;
   }
 
+  /* Scrollbar compacta */
   ::-webkit-scrollbar {
     width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--bg);
+    background: var(--bg-dark);
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--green-dim);
-    border-radius: 3px;
+    background: var(--border-color);
+    border-radius: 10px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--green);
+    background: var(--text-muted);
   }
 </style>

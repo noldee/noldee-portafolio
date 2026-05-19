@@ -13,13 +13,13 @@ const projects = [
     stack: ["React", "Tailwind", "TypeScript"],
   },
   {
-    title: "Modern User Manager",
+    title: "BiblioDigital Core",
     description:
-      "Full-Stack REST API & Dashboard con arquitectura desacoplada. Backend con Java/Spring y Frontend con React.",
-    image: "/images/proyecto-2.jpeg",
-    live: "https://modern-user-manager.netlify.app/",
-    github: "https://github.com/noldee/modern-user-manager",
-    stack: ["React", "Spring Boot", "MySQL", "Nextjs"],
+      "Sistema centralizado de gestión para bibliotecas universitarias digitales. Controla el ciclo de vida de préstamos consumidos desde APIs externas, automatiza devoluciones, notificaciones por correo y asegura sesiones de usuario.",
+    image: "/images/proyecto-2.jpeg", 
+    live: "https://sistemabiblioteca-2yeq.onrender.com/auth/login",
+    github: "https://github.com/noldee/SistemaBiblioteca",
+    stack: ["Spring Boot", "Thymeleaf", "PostgreSQL", "Supabase", "Tailwind"],
   },
   {
     title: "Spotify Clone",
@@ -41,8 +41,20 @@ const projects = [
   },
 ];
 
-// Objeto con las rutas de tus SVGs basado en los nombres de tu stack.
-// Las claves están en minúsculas para hacer el emparejamiento insensible a mayúsculas/minúsculas.
+const upcomingProjects = [
+  {
+    title: "API Gateway Automator",
+    status: "in_design",
+    description: "Un middleware ligero en Spring Boot para enrutar y securizar microservicios de forma dinámica."
+  },
+  {
+    title: "Task Scheduler CLI",
+    status: "planning",
+    description: "Herramienta de consola para automatizar tareas repetitivas de backend mediante comandos programados."
+  }
+];
+
+// Mapeo actualizado al estilo Bun con tus nuevos iconos
 const ICONS: Record<string, string> = {
   react: "/images/icons/react.svg",
   tailwind: "/images/icons/tailwind.svg",
@@ -50,65 +62,74 @@ const ICONS: Record<string, string> = {
   "spring boot": "/images/icons/springboot.svg",
   mysql: "/images/icons/mysql.svg",
   astro: "/images/icons/astro.svg",
-  svelte: "/images/icons/svelte.svg", // Nota: si usas Svelte, asegúrate de tener el archivo svelte.svg
+  svelte: "/images/icons/svelte.svg",
   java: "/images/icons/java.svg",
   render: "/images/icons/render.svg",
-  nextjs: "/images/icons/nextjs.svg"
+  nextjs: "/images/icons/nextjs.svg",
+  thymeleaf: "/images/icons/thymeleaf.svg",
+  postgresql: "/images/icons/postgresql.svg",
+  supabase: "/images/icons/supabase.svg"
 };
 ---
 
-<section id="proyectos" class="py-24 border-t border-[var(--border)]">
-  <div class="max-w-5xl mx-auto px-6">
-    <div class="mb-16">
-      <span
-        class="text-xs font-mono text-[var(--green)] tracking-widest uppercase mb-4 block"
-        >Portafolio</span
-      >
-      <h2
-        class="text-5xl md:text-6xl font-display text-[var(--text)] leading-none"
-      >
-        Proyectos
+<section id="proyectos" class="py-20 border-t border-[#222225] bg-[#0b0b0c]">
+  <div class="max-w-5xl mx-auto px-4">
+    
+    <!-- Título de sección estructurado estilo Bun/Deno -->
+    <div class="mb-12">
+      <h2 class="text-xl font-bold text-[#fbebca]">
+        [03] proyectos_destacados
       </h2>
+      <p class="text-xs font-mono text-[#8c8c93] mt-1">
+        repositorios públicos y entornos desplegados
+      </p>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-px bg-[var(--border)]">
+    <!-- Grid con bordes de separación limpios -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {
         projects.map((project) => (
-          <article class="project-card bg-[var(--bg)] group hover:bg-[var(--surface)] transition-colors p-8 flex flex-col justify-between">
+          <article class="project-card bg-[#131315] border border-[#222225] rounded-2xl p-6 flex flex-col justify-between hover:border-[#8c8c93]/30 transition-all duration-300 shadow-xl group">
             <div>
-              <div class="aspect-video overflow-hidden mb-6 bg-[var(--surface-2)] rounded-sm">
+              <!-- Imagen Contenedora Redondeada -->
+              <div class="aspect-video overflow-hidden mb-5 bg-[#0b0b0c] rounded-xl border border-[#222225]">
                 <img
                   src={project.image}
                   alt={project.title}
-                  class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500 grayscale group-hover:grayscale-0"
+                  class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-all duration-500 grayscale group-hover:grayscale-0 scale-100 group-hover:scale-[1.02]"
                 />
               </div>
 
-              <h3 class="text-2xl font-display text-[var(--text)] mb-2 group-hover:text-[var(--green)] transition-colors">
+              <!-- Título del Proyecto -->
+              <h3 class="text-lg font-bold text-[#fbfaf7] mb-2 group-hover:text-[#fbebca] transition-colors">
                 {project.title}
               </h3>
-              <p class="text-[var(--text-muted)] text-sm leading-relaxed mb-6">
+              
+              <!-- Descripción -->
+              <p class="text-[#8c8c93] text-xs sm:text-sm leading-relaxed mb-6 font-normal">
                 {project.description}
               </p>
             </div>
 
-            <div class="flex items-center justify-between border-t border-[var(--border)] pt-5 mt-auto flex-wrap gap-4">
-              <div class="flex items-center gap-3">
+            <!-- Footer de la Tarjeta (Stack e Iconos de Link) -->
+            <div class="flex items-center justify-between border-t border-[#222225] pt-4 mt-auto gap-4">
+              <!-- Renderizado de Tecnologías (Micro-cajas) -->
+              <div class="flex items-center gap-1.5 flex-wrap">
                 {project.stack.map((tech) => {
                   const iconPath = ICONS[tech.toLowerCase()];
                   return (
                     <div
-                      class="flex items-center justify-center w-8 h-8 rounded-md bg-[var(--green)]/10 border border-[var(--green)]/20 hover:border-[var(--green)] transition-colors p-1.5"
+                      class="flex items-center justify-center w-7 h-7 rounded-lg bg-[#0b0b0c] border border-[#222225] hover:border-[#fbebca]/40 transition-colors p-1.5"
                       title={tech}
                     >
                       {iconPath ? (
                         <img
                           src={iconPath}
                           alt={tech}
-                          class="w-full h-full object-contain filter brightness-125"
+                          class="w-full h-full object-contain filter opacity-80 group-hover:opacity-100"
                         />
                       ) : (
-                        <span class="text-[9px] font-mono text-[var(--green)]">
+                        <span class="text-[8px] font-mono font-bold text-[#8c8c93] uppercase">
                           {tech.substring(0, 3)}
                         </span>
                       )}
@@ -117,23 +138,26 @@ const ICONS: Record<string, string> = {
                 })}
               </div>
 
-              <div class="flex items-center gap-4">
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-[var(--text-muted)] hover:text-[var(--green)] flex items-center gap-1.5 transition-colors duration-200"
-                  aria-label="Demo del proyecto"
-                >
-                  <CiLink className="w-5 h-5" />
-                </a>
+              <!-- Links del Proyecto -->
+              <div class="flex items-center gap-3">
+                {project.live && (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-[#8c8c93] hover:text-[#fbebca] transition-colors p-1"
+                    aria-label="Demo en vivo"
+                  >
+                    <CiLink className="w-5 h-5" />
+                  </a>
+                )}
 
                 {project.github && (
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="text-[var(--text-muted)] hover:text-[var(--text)] flex items-center gap-1.5 transition-colors duration-200"
+                    class="text-[#8c8c93] hover:text-[#fbfaf7] transition-colors p-1"
                     aria-label="Repositorio de GitHub"
                   >
                     <FaGithubAlt className="w-5 h-5" />
@@ -155,9 +179,9 @@ const ICONS: Record<string, string> = {
 
   gsap.utils.toArray(".project-card").forEach((card: any, i) => {
     gsap.from(card, {
-      y: 30,
+      y: 20,
       opacity: 0,
-      duration: 0.6,
+      duration: 0.5,
       delay: i * 0.1,
       ease: "power2.out",
       scrollTrigger: {
