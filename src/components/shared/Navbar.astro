@@ -1,18 +1,117 @@
 ---
 
 ---
-<header class="fixed top-0 left-0 w-full z-[100] border-b border-[#262930] bg-[#121316]/90 backdrop-blur-sm">
+
+<!-- Header Fijo y Transparente -->
+<header
+  class="fixed top-0 left-0 w-full z-[100] border-b border-[var(--border)] bg-[var(--bg-main)]/90 backdrop-blur-sm"
+>
   <div class="max-w-4xl mx-auto flex justify-between items-center h-14 px-6">
-    <a href="/" class="text-sm font-bold tracking-tight text-[#f4f4f6] hover:text-[#6366f1] transition-colors">
+    <a
+      href="/"
+      class="text-sm font-bold tracking-tight text-[var(--text-main)] hover:text-[var(--accent)] transition-colors"
+    >
       Walter Soca
     </a>
 
-    <nav class="flex items-center gap-x-6 text-xs font-medium text-[#8e939e]">
-      <a href="#sobre-mi" class="hover:text-[#f4f4f6] transition-colors">Sobre mi</a>
-      <a href="#proyectos" class="hover:text-[#f4f4f6] transition-colors">Proyectos</a>
-      <a href="#experiencia" class="hover:text-[#f4f4f6] transition-colors">Experiencia</a>
-      <a href="CV.pdf" download class="bg-[#1a1c23] border border-[#262930] text-[#f4f4f6] px-3 py-1 rounded-md hover:bg-[#262930] transition-colors">CV</a>
+    <!-- Navegación Escritorio (Se oculta en móviles: hidden md:flex) -->
+    <nav
+      class="hidden md:flex items-center gap-x-6 text-xs font-medium text-[var(--text-muted)]"
+    >
+      <a
+        href="#sobre-mi"
+        class="hover:text-[var(--text-main)] transition-colors">Sobre mi</a
+      >
+      <a
+        href="#proyectos"
+        class="hover:text-[var(--text-main)] transition-colors">Proyectos</a
+      >
+      <a
+        href="#experiencia"
+        class="hover:text-[var(--text-main)] transition-colors">Experiencia</a
+      >
+      <a
+        href="CV.pdf"
+        download
+        class="bg-[var(--bg-card)] border border-[var(--border)] text-[var(--text-main)] px-3 py-1 rounded-md hover:bg-[var(--border)] transition-colors"
+        >CV</a
+      >
     </nav>
+
+    <!-- Botón Hamburguesa Móvil (Se oculta en escritorio: md:hidden) -->
+    <button
+      id="menu-toggle"
+      aria-label="Abrir menú"
+      class="md:hidden flex flex-col gap-1 p-1 text-[var(--text-main)] hover:text-[var(--accent)] transition-colors"
+    >
+      <span class="h-[2px] w-5 bg-current block rounded-full"></span>
+      <span class="h-[2px] w-5 bg-current block rounded-full"></span>
+    </button>
   </div>
 </header>
+
+<!-- Menú Móvil Desplegable (Limpio y minimalista) -->
+<div
+  id="mobile-menu"
+  class="hidden fixed inset-0 z-[999] flex flex-col bg-[var(--bg-main)] p-6 pt-20"
+>
+  <!-- Botón Cerrar (X) -->
+  <button
+    id="close-menu"
+    class="absolute top-4 right-6 text-[var(--text-muted)] hover:text-[var(--text-main)] text-2xl"
+    aria-label="Cerrar menú"
+  >
+    &times;
+  </button>
+
+  <!-- Enlaces del Menú Móvil -->
+  <nav class="flex flex-col gap-2 border-t border-[var(--border)] pt-4">
+    <a
+      href="#proyectos"
+      class="mobile-link text-base font-medium text-[var(--text-main)] py-2.5 border-b border-[var(--border)]/30 hover:text-[var(--accent)] transition-colors"
+    >
+      Proyectos
+    </a>
+    <a
+      href="#experiencia"
+      class="mobile-link text-base font-medium text-[var(--text-main)] py-2.5 border-b border-[var(--border)]/30 hover:text-[var(--accent)] transition-colors"
+    >
+      Experiencia
+    </a>
+  </nav>
+
+  <!-- Botón de CV destacado en móvil -->
+  <div class="mt-6">
+    <a
+      href="CV.pdf"
+      download
+      class="w-full inline-flex items-center justify-center text-sm font-semibold bg-[var(--bg-card)] text-[var(--text-main)] py-2.5 rounded-md border border-[var(--border)] hover:bg-[var(--border)] transition-colors"
+    >
+      Descargar CV
+    </a>
+  </div>
+</div>
+
+<!-- Espaciador exacto para que el Hero no quede tapado -->
 <div class="h-14"></div>
+
+<script>
+  const menuToggle = document.querySelector("#menu-toggle");
+  const closeMenu = document.querySelector("#close-menu");
+  const mobileMenu = document.querySelector("#mobile-menu");
+  const mobileLinks = document.querySelectorAll(".mobile-link");
+
+  const showMenu = () => {
+    mobileMenu?.classList.remove("hidden");
+    document.body.style.overflow = "hidden"; // Evita que la página del fondo se mueva
+  };
+
+  const hideMenu = () => {
+    mobileMenu?.classList.add("hidden");
+    document.body.style.overflow = ""; // Devuelve el scroll normal
+  };
+
+  menuToggle?.addEventListener("click", showMenu);
+  closeMenu?.addEventListener("click", hideMenu);
+  mobileLinks.forEach((link) => link.addEventListener("click", hideMenu));
+</script>
