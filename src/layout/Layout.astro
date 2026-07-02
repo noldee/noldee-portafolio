@@ -1,6 +1,5 @@
 ---
 import "../styles/global.css";
-
 interface Props {
   title?: string;
   description?: string;
@@ -8,7 +7,7 @@ interface Props {
 
 const {
   title = "Walter Soca | Portafolio",
-  description = "Full Stack Developer. Construyendo la web rápida y moderna.",
+  description = "Desarrollador de Software.",
 } = Astro.props;
 ---
 
@@ -18,62 +17,32 @@ const {
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
-
-    <!-- Google Fonts: JetBrains Mono para TODO (Estilo Bun/Deno total) -->
+    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
     <title>{title}</title>
   </head>
-
-  <body class="antialiased min-h-screen bg-[#0b0b0c] text-[#fbfaf7]">
+  <body class="antialiased bg-[#121316] text-[#f4f4f6] min-h-screen">
     <slot />
   </body>
 </html>
 
 <style is:global>
   :root {
-    --bg-dark: #0b0b0c; /* El negro orgánico de Bun */
-    --bg-card: #131315; /* Gris carbón para las tarjetas */
-    --border-color: #222225; /* Bordes sutiles pero visibles */
-    --text-main: #fbfaf7; /* Blanco crema (no cansa la vista) */
-    --text-muted: #8c8c93; /* Gris lavado */
-    --brand-color: #fbebca; /* El amarillo crema característico */
-    --brand-accent: #ff847c; /* Toque pastel secundario */
+    --bg-main: #121316;      /* Fondo oscuro suave (no negro puro) */
+    --bg-card: #1a1c23;      /* Gris mineral para los bloques */
+    --border: #262930;       /* Bordes finos y limpios */
+    --text-main: #f4f4f6;    /* Blanco tiza, suave para la vista */
+    --text-muted: #8e939e;   /* Gris claro para textos secundarios */
+    --accent: #6366f1;       /* Azul acero/índigo sutil solo para detalles */
   }
 
-  html,
-  body {
-    background-color: var(--bg-dark);
+  html, body {
+    background-color: var(--bg-main);
     color: var(--text-main);
-    font-family: "JetBrains Mono", monospace;
-    letter-spacing: -0.01em;
-  }
-
-  /* Selección de texto estilo retro-futurista */
-  ::selection {
-    background: var(--brand-color);
-    color: #000000;
-  }
-
-  /* Scrollbar compacta */
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: var(--bg-dark);
-  }
-  ::-webkit-scrollbar-thumb {
-    background: var(--border-color);
-    border-radius: 10px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--text-muted);
+    font-family: 'Inter', system-ui, sans-serif;
   }
 </style>

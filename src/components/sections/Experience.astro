@@ -3,11 +3,11 @@ const experience = [
   {
     role: "Full Stack Developer",
     company: "M&G S.A.C. Servicios Generales",
-    period: "Feb 2026 — Actualidad (Contrato de prácticas)",
+    period: "Feb 2026 — Jun 2026",
     description:
       "Desarrollo de plataforma web de ventas. Implementación del dashboard administrativo, catálogo interactivo y módulo de gestión de ventas. Arquitectura moderna con autenticación JWT, desplegada en entornos en la nube.",
     stack: ["Next.js", "NestJS", "Prisma", "Supabase", "Tailwind CSS", "shadcn/ui", "Vercel"],
-    current: true, // Flag para activar el efecto "en vivo"
+    current: false,
   },
   {
     role: "Desarrollador Frontend",
@@ -30,66 +30,63 @@ const experience = [
 ];
 ---
 
-<section id="experiencia" class="py-20 border-t border-[#222225] bg-[#0b0b0c]">
-  <div class="max-w-5xl mx-auto px-4">
+<section id="experiencia" class="py-16 md:py-20 border-t border-[var(--border)] bg-[var(--bg-main)]">
+  <div class="max-w-4xl mx-auto px-6">
     
-    <!-- Título de sección estructurado -->
-    <div class="mb-12">
-      <h2 class="text-xl font-bold text-[#fbebca]">
-        [02] trayectoria_laboral
+    <!-- Título de Sección Limpio -->
+    <div class="mb-10">
+      <h2 class="text-lg font-bold text-[var(--text-main)] tracking-tight">
+        Experiencia laboral
       </h2>
-      <p class="text-xs font-mono text-[#8c8c93] mt-1">
-        historial de despliegues y roles prácticos
-      </p>
     </div>
 
-    <!-- Contenedor del Historial (Estilo registros de Consola) -->
+    <!-- Lista de Experiencias -->
     <div class="space-y-0">
       {
         experience.map((item) => (
-          <div class="exp-card group border-t border-[#222225] py-8 grid grid-cols-1 md:grid-cols-[220px_1fr] gap-4 md:gap-12 hover:bg-[#131315]/40 transition-colors px-3 -mx-3 rounded-xl">
-            <!-- Bloque Izquierdo: Meta e Información Temporal -->
-            <div class="font-mono">
-              <span class="text-xs font-bold text-[#fbebca] tracking-tight block mb-1">
-                :: {item.company}
+          <div class="exp-card group border-b border-[var(--border)] py-8 grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 md:gap-8 hover:bg-[var(--bg-card)]/30 transition-colors px-4 -mx-4 rounded-lg">
+            
+            <!-- Columna Izquierda: Temporalidad y Empresa -->
+            <div class="flex flex-col justify-start">
+              <span class="text-xs font-semibold text-[var(--text-main)] tracking-tight mb-1">
+                {item.company}
               </span>
               
-              <div class="flex items-center gap-2 mt-1">
+              <div class="flex items-center gap-2">
                 {item.current && (
                   <span class="flex h-1.5 w-1.5 relative">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ff847c] opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#ff847c]"></span>
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-[var(--accent)]"></span>
                   </span>
                 )}
-                <span class="text-xs text-[#8c8c93] block">
+                <span class="text-xs text-[var(--text-muted)]">
                   {item.period}
                 </span>
               </div>
             </div>
 
-            <!-- Bloque Derecho: Contenido Técnico -->
+            <!-- Columna Derecha: Cargo y Detalles Técnicas -->
             <div>
-              <h3 class="text-base font-semibold text-[#fbfaf7] mb-2">
+              <h3 class="text-sm font-semibold text-[var(--text-main)] mb-2">
                 {item.role}
               </h3>
-              <p class="text-[#8c8c93] text-sm leading-relaxed mb-4 font-normal">
+              <p class="text-[var(--text-muted)] text-sm leading-relaxed mb-4 font-normal">
                 {item.description}
               </p>
               
-              <!-- Stack de Tecnologías estilo Micro-píldoras -->
+              <!-- Tecnologías en etiquetas sutiles -->
               <div class="flex flex-wrap gap-1.5">
                 {item.stack.map((tech) => (
-                  <span class="px-2.5 py-0.5 text-[11px] font-mono text-[#fbfaf7] border border-[#222225] bg-[#131315] rounded-md group-hover:border-[#8c8c93]/40 transition-colors">
+                  <span class="px-2 py-0.5 text-[11px] font-medium text-[var(--text-muted)] border border-[var(--border)] bg-[var(--bg-card)] rounded transition-colors group-hover:text-[var(--text-main)] group-hover:border-[var(--text-muted)]/30">
                     {tech}
                   </span>
                 ))}
               </div>
             </div>
+
           </div>
         ))
       }
-      <!-- Cierre de línea inferior estilo bloque de código -->
-      <div class="border-t border-[#222225] mt-4"></div>
     </div>
   </div>
 </section>
@@ -100,14 +97,14 @@ const experience = [
   gsap.registerPlugin(ScrollTrigger);
 
   gsap.from(".exp-card", {
-    y: 15,
+    y: 12,
     opacity: 0,
     duration: 0.4,
-    stagger: 0.15,
+    stagger: 0.12,
     ease: "power2.out",
     scrollTrigger: {
       trigger: "#experiencia",
-      start: "top 80%",
+      start: "top 85%",
     },
   });
 </script>

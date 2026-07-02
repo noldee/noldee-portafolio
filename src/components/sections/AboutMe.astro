@@ -2,67 +2,40 @@
 
 ---
 
-<section class="pt-12 pb-20 bg-[#0b0b0c]">
-  <div class="max-w-5xl mx-auto px-4">
-    <!-- Badge estilo comando Bun -->
-    <div
-      class="inline-flex items-center gap-2 mb-8 bg-[#131315] border border-[#222225] px-3 py-1.5 rounded-xl"
-    >
-      <span class="w-2 h-2 rounded-full bg-[#ff847c] animate-pulse"></span>
-      <span class="text-[11px] font-medium text-[#8c8c93]">
-        ready: open to work
-      </span>
+<section class="py-20 md:py-28 bg-[#121316]">
+  <div class="max-w-4xl mx-auto px-6">
+    
+    <!-- Un pequeño indicador sutil -->
+    <div class="inline-flex items-center gap-2 mb-4 text-xs font-medium text-[#6366f1]">
+      <span class="w-1.5 h-1.5 rounded-full bg-[#6366f1]"></span>
+      Disponible para trabajar
     </div>
 
-    <!-- Título Masivo Monoespaciado -->
-    <div class="max-w-4xl mb-6">
-      <h1
-        id="hero-title"
-        class="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tighter text-[#fbfaf7] leading-[1.05]"
-      >
-        Construyendo la web <span class="text-[#fbebca]">más rápida</span>.
-      </h1>
-    </div>
+    <!-- Título principal plano y limpio -->
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[#f4f4f6] mb-4">
+      Hola, soy Walter Soca
+    </h1>
 
-    <!-- Descripción -->
-    <div id="hero-p" class="max-w-xl mb-8">
-      <p class="text-sm sm:text-base text-[#8c8c93] leading-relaxed">
-        Hola, soy <span class="text-[#fbfaf7] font-medium">Walter Soca</span>.
-        Desarrollador de Software enfocado en crear, optimizar y estructurar
-        buen software.
-      </p>
-    </div>
+    <!-- Descripción concisa -->
+    <p class="text-base sm:text-lg text-[#8e939e] max-w-xl mb-8 leading-relaxed">
+      Desarrollador de Software enfocado en crear aplicaciones web rápidas, optimizadas y escalables.
+    </p>
 
-    <!-- Acciones en Bloque -->
-    <div id="hero-actions" class="flex flex-wrap items-center gap-3">
+    <!-- Botones y enlaces básicos -->
+    <div class="flex flex-wrap items-center gap-6">
       <a
         href="#proyectos"
-        class="bg-[#131315] text-[#fbfaf7] border border-[#222222] px-5 py-2.5 text-xs font-semibold rounded-xl hover:border-[#fbebca] transition-all"
+        class="bg-[#6366f1] hover:bg-[#4f46e5] text-white px-5 py-2 text-sm font-medium rounded-md transition-colors shadow-sm"
       >
-        ./ver-proyectos.sh
+        Ver proyectos
       </a>
-
-      <!-- Redes en formato píldora mono -->
-      <div class="flex items-center gap-2">
-        {
-          [
-            { href: "https://github.com/noldee", label: "gh" },
-            { href: "mailto:socamezareswalter@gmail.com", label: "mail" },
-            {
-              href: "https://www.linkedin.com/in/walter-soca-mezares-5b158b3b0/",
-              label: "in",
-            },
-          ].map((social) => (
-            <a
-              href={social.href}
-              target="_blank"
-              class="px-3 py-2.5 bg-[#131315] border border-[#222225] rounded-xl text-xs text-[#8c8c93] hover:text-[#fbebca] hover:border-[#fbebca] transition-all font-medium"
-            >
-              {social.label}
-            </a>
-          ))
-        }
+      
+      <div class="flex items-center gap-4 text-sm font-medium text-[#8e939e]">
+        <a href="https://github.com/noldee" target="_blank" class="hover:text-[#f4f4f6] transition-colors">GitHub</a>
+        <a href="https://www.linkedin.com/in/walter-soca-mezares-5b158b3b0/" target="_blank" class="hover:text-[#f4f4f6] transition-colors">LinkedIn</a>
+        <a href="mailto:socamezareswalter@gmail.com" class="hover:text-[#f4f4f6] transition-colors">Contacto</a>
       </div>
     </div>
+
   </div>
 </section>

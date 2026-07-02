@@ -1,96 +1,18 @@
 ---
 
 ---
-
-<!-- Se cambió 'fixed' por 'absolute' y el fondo ahora es sólido -->
-<header
-  class="absolute top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-5xl z-[100] border border-[#222225] bg-[#131315] rounded-2xl shadow-xl"
->
-  <div class="flex justify-between items-center h-14 px-4 sm:px-6">
-    <!-- Logo tipo Bun (Texto mono en negrita) -->
-    <a
-      href="/"
-      class="flex items-center gap-2 text-sm font-bold text-[#fbebca] tracking-tighter"
-    >
-      <span>wSoca()</span>
+<header class="fixed top-0 left-0 w-full z-[100] border-b border-[#262930] bg-[#121316]/90 backdrop-blur-sm">
+  <div class="max-w-4xl mx-auto flex justify-between items-center h-14 px-6">
+    <a href="/" class="text-sm font-bold tracking-tight text-[#f4f4f6] hover:text-[#6366f1] transition-colors">
+      Walter Soca
     </a>
 
-    <!-- Navegación central (Escritorio) -->
-    <nav
-      class="hidden md:flex items-center gap-x-6 text-xs font-medium text-[#8c8c93]"
-    >
-      <a href="/" class="text-[#fbfaf7] hover:text-[#fbebca] transition-colors"
-        >.inicio()</a
-      >
-      <a href="#experiencia" class="hover:text-[#fbebca] transition-colors"
-        >.experiencia()</a
-      >
-      <a href="#proyectos" class="hover:text-[#fbebca] transition-colors"
-        >.proyectos()</a
-      >
-      <a href="/blog" class="hover:text-[#fbebca] transition-colors">.blog()</a>
+    <nav class="flex items-center gap-x-6 text-xs font-medium text-[#8e939e]">
+      <a href="#sobre-mi" class="hover:text-[#f4f4f6] transition-colors">Sobre mi</a>
+      <a href="#proyectos" class="hover:text-[#f4f4f6] transition-colors">Proyectos</a>
+      <a href="#experiencia" class="hover:text-[#f4f4f6] transition-colors">Experiencia</a>
+      <a href="CV.pdf" download class="bg-[#1a1c23] border border-[#262930] text-[#f4f4f6] px-3 py-1 rounded-md hover:bg-[#262930] transition-colors">CV</a>
     </nav>
-
-    <!-- Botón de Acción tipo Píldora Terminal -->
-    <div class="flex items-center gap-3">
-      <a
-        href="CV.pdf"
-        download
-        class="text-xs font-semibold bg-[#fbebca] text-[#0b0b0c] px-4 py-2 rounded-xl hover:bg-[#fbfaf7] transition-all border border-[#fbebca]"
-      >
-        curl CV.pdf
-      </a>
-
-      <!-- Hamburguesa móvil -->
-      <button
-        id="menu-toggle"
-        aria-label="Menu"
-        class="md:hidden flex flex-col gap-1 p-1"
-      >
-        <span class="h-[1.5px] w-5 bg-[#fbfaf7] block"></span>
-        <span class="h-[1.5px] w-5 bg-[#fbfaf7] block"></span>
-      </button>
-    </div>
   </div>
 </header>
-
-<!-- Menú Móvil Adaptado (Este sí se queda fixed temporalmente mientras está abierto para cubrir toda la pantalla correctamente) -->
-<div
-  id="mobile-menu"
-  class="hidden fixed inset-0 z-[999] flex-col bg-[#0b0b0c] p-6 pt-24"
->
-  <button
-    id="close-menu"
-    class="absolute top-6 right-6 text-[#8c8c93] hover:text-[#fbfaf7] text-xs"
-  >
-    [ cerrar ]
-  </button>
-  <nav class="flex flex-col gap-6 text-xl font-medium">
-    <a href="/" class="mobile-link text-[#fbebca] hover:underline">/inicio</a>
-    <a href="#experiencia" class="mobile-link hover:underline">/experiencia</a>
-    <a href="#proyectos" class="mobile-link hover:underline">/proyectos</a>
-    <a href="/blog" class="mobile-link hover:underline">/blog</a>
-  </nav>
-</div>
-
-<!-- Espaciador para que el Hero no se pegue al borde superior -->
-<div class="h-24"></div>
-
-<script>
-  const menuToggle = document.querySelector("#menu-toggle");
-  const closeMenu = document.querySelector("#close-menu");
-  const mobileMenu = document.querySelector("#mobile-menu");
-  const mobileLinks = document.querySelectorAll(".mobile-link");
-
-  menuToggle?.addEventListener("click", () =>
-    mobileMenu?.classList.remove("hidden"),
-  );
-
-  closeMenu?.addEventListener("click", () =>
-    mobileMenu?.classList.add("hidden"),
-  );
-
-  mobileLinks.forEach((link) =>
-    link.addEventListener("click", () => mobileMenu?.classList.add("hidden")),
-  );
-</script>
+<div class="h-14"></div>
